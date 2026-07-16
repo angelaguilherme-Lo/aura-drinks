@@ -24,8 +24,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${cormorant.variable}`}>
         <CartProvider>
-          {children}
-          <CartShell />
+          <CartShell>{children}</CartShell>
         </CartProvider>
       </body>
     </html>

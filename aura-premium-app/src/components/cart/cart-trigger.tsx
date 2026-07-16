@@ -13,7 +13,7 @@ export function CartTrigger({ onClick }: CartTriggerProps) {
     <button
       type="button"
       onClick={onClick}
-      className="relative inline-flex h-11 items-center justify-center rounded-full border border-[var(--surface-line)] bg-white/85 px-5 text-sm font-medium text-[var(--text)] shadow-[0_12px_28px_rgba(30,20,10,0.08)] backdrop-blur-sm transition hover:bg-white"
+      className="relative inline-flex h-11 items-center justify-center rounded-full border border-[var(--surface-line)] bg-white px-5 text-sm font-medium text-[var(--text)] transition hover:bg-[var(--surface)]"
       aria-label={`Open cart with ${totalItems} items`}
     >
       Cart

@@ -13,7 +13,7 @@
   --text: #211c18;
   --text-muted: #6e655f;
   --text-soft: #9b8f87;
-  --text-inverse: #211c18;
+  --text-inverse: #f7f2ed;
 
   --primary: #355f4a;
   --primary-2: #7e2d39;
@@ -45,7 +45,7 @@ html.dark {
   --surface-dark: #120f0d;
   --surface-line: rgba(255, 244, 236, 0.08);
 
-  --text: #211c18;
+  --text: #f4ece6;
   --text-muted: #ccbdb2;
   --text-soft: #9d9087;
   --text-inverse: #171311;

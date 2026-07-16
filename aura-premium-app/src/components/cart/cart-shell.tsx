@@ -1,19 +1,40 @@
 "use client";
 
-import { useState } from "react";
+import { createContext, useContext, useMemo, useState, type ReactNode } from "react";
 import { CartDrawer } from "./cart-drawer";
-import { CartTrigger } from "./cart-trigger";
 
-export function CartShell() {
+type CartUiContextValue = {
+  openCart: () => void;
+  closeCart: () => void;
+};
+
+const CartUiContext = createContext<CartUiContextValue | undefined>(undefined);
+
+export function CartShell({ children }: { children?: ReactNode }) {
   const [open, setOpen] = useState(false);
 
-  return (
-    <>
-      <div className="fixed right-6 top-6 z-40">
-        <CartTrigger onClick={() => setOpen(true)} />
-      </div>
-
-      <CartDrawer open={open} onClose={() => setOpen(false)} />
-    </>
+  const value = useMemo(
+    () => ({
+      openCart: () => setOpen(true),
+      closeCart: () => setOpen(false),
+    }),
+    []
   );
+
+  return (
+    <CartUiContext.Provider value={value}>
+      {children}
+      <CartDrawer open={open} onClose={() => setOpen(false)} />
+    </CartUiContext.Provider>
+  );
+}
+
+export function useCartUi() {
+  const context = useContext(CartUiContext);
+
+  if (!context) {
+    throw new Error("useCartUi must be used within a CartShell");
+  }
+
+  return context;
 }
