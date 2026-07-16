@@ -42,7 +42,7 @@ Become the world's leading premium electrolyte soda brand.
 
 ## Website
 
-Coming Soon
+Project demo
 
 ## Founder
 
