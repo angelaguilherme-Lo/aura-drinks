@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { Product } from "../aura-data";
 import { AddToCartButton } from "../cart/add-to-cart-button";
+import { FavoriteButton } from "../favorites/favorite-button";
 
 type ProductInfoProps = {
   product: Product;
@@ -20,9 +21,12 @@ export function ProductInfo({ product }: ProductInfoProps) {
           {product.collection}
         </span>
 
-        <span className="text-lg font-semibold text-[var(--text)]">
-          €{product.price.toFixed(2)}
-        </span>
+        <div className="flex items-center gap-3">
+          <span className="text-lg font-semibold text-[var(--text)]">
+            €{product.price.toFixed(2)}
+          </span>
+          <FavoriteButton slug={product.slug} />
+        </div>
       </div>
 
       <h1 className="display-font mt-5 text-4xl leading-[0.98] text-[var(--text)] md:text-5xl">
@@ -115,7 +119,9 @@ export function ProductInfo({ product }: ProductInfoProps) {
           <p className="text-xs uppercase tracking-[0.18em] text-[var(--text-soft)]">
             Collection
           </p>
-          <p className="mt-2 font-medium text-[var(--text)]">{product.collection}</p>
+          <p className="mt-2 font-medium text-[var(--text)]">
+            {product.collection}
+          </p>
         </div>
 
         <div className="rounded-[20px] border border-[var(--surface-line)] bg-white/60 p-4">

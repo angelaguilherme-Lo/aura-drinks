@@ -8,18 +8,20 @@ export function Story() {
               Brand story
             </p>
             <h2 className="display-font mt-3 text-5xl leading-none md:text-6xl">
-              From empty-calorie soda to elevated ritual
+              From empty-calorie soda and wellness
             </h2>
             <p className="mt-5 leading-7 text-[var(--text-muted)]">
-              AuraFizz describes its mission as creating healthier beverages
-              that still deliver taste and refreshment, replacing sugary soda
-              habits with a better-for-you experience shaped around wellness and
-              performance.
+              At Aura, we believe you shouldn’t have to choose between drinks 
+              that taste amazing and drinks that actually do good for your body.
+              Born from a desire to break free from high-sugar sodas and artificial energy drinks, 
+              Aura was created to elevate your daily hydration routine. We craft seasonal, flavor-forward 
+              electrolyte wellness drinks designed to support your performance, invigorate your day, 
+              and satisfy your cravings—completely guilt-free.
             </p>
             <p className="mt-4 leading-7 text-[var(--text-muted)]">
-              That means the interface should feel closer to premium beauty,
-              boutique hospitality, and luxury food merchandising than to
-              aggressive sports-drink branding.
+              Our Mission,
+              to transform hydration into a joyful wellness ritual by creating vibrant, 
+              seasonal beverages that replace sugary habits with clean, functional refreshment.
             </p>
           </div>
 
@@ -27,41 +29,42 @@ export function Story() {
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="rounded-[24px] bg-[linear-gradient(180deg,rgba(183,142,79,0.15),rgba(255,255,255,0.08))] p-5">
                 <div className="text-xs uppercase tracking-[0.22em] text-[var(--text-soft)]">
-                  Design language
+                  The Clean Soda Replacement
                 </div>
                 <p className="mt-3 text-sm leading-6 text-[var(--text-muted)]">
-                  Warm neutrals, frosted glass surfaces, elegant serif accents,
-                  and restrained seasonal colors.
+                  Experience the vibrant taste and crisp, icy refreshment of a traditional soda—without the high sugar, artificial sweeteners, 
+                  or post-sugar crash. It’s the ultimate guilt-free ritual to break bad habits.
                 </p>
               </div>
 
               <div className="rounded-[24px] bg-[linear-gradient(180deg,rgba(53,95,74,0.12),rgba(255,255,255,0.08))] p-5">
                 <div className="text-xs uppercase tracking-[0.22em] text-[var(--text-soft)]">
-                  UX direction
+                  Functional Performance & Recovery
                 </div>
                 <p className="mt-3 text-sm leading-6 text-[var(--text-muted)]">
-                  Curated discovery, premium catalog browsing, and app-like
-                  product detail interactions.
+                  Formulated with essential electrolytes and trace minerals, Aura works as hard as you do. 
+                  Whether powering through an intense workout 
+                  or beating the 3 PM office fatigue, it restores balance and sustains daily vitality.
                 </p>
               </div>
 
               <div className="rounded-[24px] bg-[linear-gradient(180deg,rgba(126,45,57,0.12),rgba(255,255,255,0.08))] p-5">
                 <div className="text-xs uppercase tracking-[0.22em] text-[var(--text-soft)]">
-                  Tone of voice
+                  Flavor-First Wellness
                 </div>
                 <p className="mt-3 text-sm leading-6 text-[var(--text-muted)]">
-                  Refined, clean, confident, and specific rather than generic
-                  wellness hype.
+                  Health shouldn't feel like a compromise or a chore. Aura merges science-backed hydration with chef-inspired flavor design, 
+                  delivering a premium "better-for-you" experience where taste and performance live in total harmony.
                 </p>
               </div>
 
               <div className="rounded-[24px] bg-[linear-gradient(180deg,rgba(61,122,122,0.12),rgba(255,255,255,0.08))] p-5">
                 <div className="text-xs uppercase tracking-[0.22em] text-[var(--text-soft)]">
-                  Product framing
+                  Limited-Edition Seasonal Flavors
                 </div>
                 <p className="mt-3 text-sm leading-6 text-[var(--text-muted)]">
-                  Seasonal flavor worlds, ingredient-led narratives, and bundle
-                  creation instead of flat SKU listing.
+                  Say goodbye to boring, static drink options. Aura captures the peak taste of each season, offering limited-run flavor profiles 
+                  that keep your hydration routine fresh, exciting, and something to look forward to year-round.
                 </p>
               </div>
             </div>

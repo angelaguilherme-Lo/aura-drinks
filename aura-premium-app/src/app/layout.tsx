@@ -3,6 +3,8 @@ import type { ReactNode } from "react";
 import { Inter, Cormorant_Garamond } from "next/font/google";
 import { CartProvider } from "../components/cart/cart-provider";
 import { CartShell } from "../components/cart/cart-shell";
+import { AuthProvider } from "../components/auth/auth-provider";
+import { FavoritesProvider } from "../components/favorites/favorites-provider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -23,9 +25,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${cormorant.variable}`}>
-        <CartProvider>
-          <CartShell>{children}</CartShell>
-        </CartProvider>
+        <AuthProvider>
+          <FavoritesProvider>
+            <CartProvider>
+              <CartShell>{children}</CartShell>
+            </CartProvider>
+          </FavoritesProvider>
+        </AuthProvider>
       </body>
     </html>
   );

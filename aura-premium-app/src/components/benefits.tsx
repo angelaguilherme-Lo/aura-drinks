@@ -11,13 +11,15 @@ export function Benefits() {
                 Functional value
               </p>
               <h2 className="display-font mt-3 text-5xl leading-none md:text-6xl">
-                A wellness-led soda narrative
+                Pure Hydration, Powered by the Seasons
               </h2>
               <p className="mt-5 max-w-[48ch] leading-7 text-[var(--text-muted)]">
-                The current AuraFizz positioning centers on prebiotics,
-                electrolytes, low sugar, hydration, and wellness-oriented
-                performance, so the web app should present benefits in a clean,
-                credible, and premium tone rather than loud fitness language.
+                Seasonally Inspired Flavors: We capture the peak taste of every season, 
+                bringing you fresh, limited-run profiles that keep hydration exciting year-round.
+                Clean, Functional Hydration: Packed with essential electrolytes and zero refined 
+                sugars, Aura delivers targeted support for recovery, focus, and daily vitality.
+                A Better-for-You Experience: We offer the crisp, satisfying refreshment of traditional 
+                sodas—reimagined through a lens of modern wellness and active performance.
               </p>
             </div>
 

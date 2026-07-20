@@ -1,9 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import type { Product } from "../aura-data";
 import { useCart } from "../cart/cart-provider";
+import { FavoriteButton } from "../favorites/favorite-button";
 
 type ProductCardProps = {
   product: Product;
@@ -29,23 +30,29 @@ export function ProductCard({ product }: ProductCardProps) {
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-[28px] border border-[var(--surface-line)] bg-white/95 p-5 shadow-[0_14px_34px_rgba(30,20,10,0.05)] backdrop-blur-sm transition duration-300 hover:-translate-y-1">
-      <Link
-  href={`/flavors/${product.slug}`}
-  className="block"
-  aria-label={`View details for ${product.name}`}
->
-  <div className="relative mx-auto flex h-[240px] w-full items-center justify-center overflow-hidden">
-    <div className="relative h-[220px] w-full max-w-[190px]">
-      <Image
-        src={product.image}
-        alt={product.name}
-        fill
-        className="object-contain object-center transition duration-500 group-hover:scale-[1.08]"
-        sizes="(max-width: 768px) 50vw, (max-width: 1280px) 25vw, 220px"
-      />
-    </div>
-  </div>
-</Link>
+      <div className="relative">
+        <div className="absolute right-0 top-0 z-10">
+          <FavoriteButton slug={product.slug} />
+        </div>
+
+        <Link
+          href={`/flavors/${product.slug}`}
+          className="block"
+          aria-label={`View details for ${product.name}`}
+        >
+          <div className="relative mx-auto flex h-[240px] w-full items-center justify-center overflow-hidden">
+            <div className="relative h-[220px] w-full max-w-[190px]">
+              <Image
+                src={product.image}
+                alt={product.name}
+                fill
+                className="object-contain object-center transition duration-500 group-hover:scale-[1.08]"
+                sizes="(max-width: 768px) 50vw, (max-width: 1280px) 25vw, 220px"
+              />
+            </div>
+          </div>
+        </Link>
+      </div>
 
       <div className="mt-4 flex items-center justify-between gap-3">
         <span
