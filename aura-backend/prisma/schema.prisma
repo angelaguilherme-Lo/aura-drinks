@@ -1,0 +1,106 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum UserRole {
+  CUSTOMER
+  ADMIN
+
+  @@map("user_role")
+}
+
+model User {
+  id           String   @id @default(uuid()) @db.Uuid
+  firstName    String   @map("first_name")
+  lastName     String   @map("last_name")
+  email        String   @unique
+  passwordHash String   @map("password_hash")
+  role         UserRole @default(CUSTOMER)
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  @@map("users")
+}
+
+model Collection {
+  id          String    @id @default(uuid()) @db.Uuid
+  slug        String    @unique
+  name        String
+  description String?
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+  products    Product[]
+
+  @@map("collections")
+}
+
+model Product {
+  id              String                @id @default(uuid()) @db.Uuid
+  slug            String                @unique
+  name            String
+  flavor          String
+  collectionId    String                @map("collection_id") @db.Uuid
+  description     String
+  longDescription String                @map("long_description")
+  priceCents      Int                   @map("price_cents")
+  currency        String                @default("EUR") @db.VarChar(3)
+  size            String
+  image           String
+  heroImage       String                @map("hero_image")
+  active          Boolean               @default(true)
+  createdAt       DateTime              @default(now()) @map("created_at")
+  updatedAt       DateTime              @updatedAt @map("updated_at")
+  collection      Collection            @relation(fields: [collectionId], references: [id], onDelete: Restrict)
+  benefits        ProductBenefit[]
+  ingredients     ProductIngredient[]
+  galleryImages   ProductGalleryImage[]
+
+  @@index([collectionId])
+  @@index([active])
+  @@map("products")
+}
+
+model ProductBenefit {
+  id        String   @id @default(uuid()) @db.Uuid
+  productId String   @map("product_id") @db.Uuid
+  text      String
+  position  Int
+  createdAt DateTime @default(now()) @map("created_at")
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([productId, position])
+  @@index([productId])
+  @@map("product_benefits")
+}
+
+model ProductIngredient {
+  id        String   @id @default(uuid()) @db.Uuid
+  productId String   @map("product_id") @db.Uuid
+  name      String
+  position  Int
+  createdAt DateTime @default(now()) @map("created_at")
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([productId, position])
+  @@index([productId])
+  @@map("product_ingredients")
+}
+
+model ProductGalleryImage {
+  id        String   @id @default(uuid()) @db.Uuid
+  productId String   @map("product_id") @db.Uuid
+  url       String
+  altText   String?  @map("alt_text")
+  position  Int
+  createdAt DateTime @default(now()) @map("created_at")
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([productId, position])
+  @@index([productId])
+  @@map("product_gallery_images")
+}

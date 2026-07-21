@@ -1,0 +1,489 @@
+{
+  "collections": [
+    {
+      "slug": "winter",
+      "name": "Winter Collection",
+      "description": "A crisp, polished seasonal line with tart fruit, bergamot, spiced pear, and layered winter botanicals."
+    },
+    {
+      "slug": "spring",
+      "name": "Spring Collection",
+      "description": "Light, clean, uplifting flavors shaped by elderflower, rose, lavender, mint, and bright citrus notes."
+    },
+    {
+      "slug": "summer",
+      "name": "Summer Collection",
+      "description": "Tropical citrus, yellow fruit, juicy basil freshness, and bright sparkling refreshment for active summer moments."
+    },
+    {
+      "slug": "autumn",
+      "name": "Autumn Collection",
+      "description": "Apple, blackberry, pumpkin spice, maple warmth, and deeper seasonal comfort with a premium finish."
+    }
+  ],
+  "products": [
+    {
+      "slug": "pomegranate-spruce",
+      "name": "Pomegranate & Spruce",
+      "flavor": "Crisp berry finish",
+      "collectionSlug": "winter",
+      "description": "A cold, jewel-toned profile with tart fruit, refined sparkle, and a clean mineral finish.",
+      "longDescription": "Pomegranate & Spruce is built as a winter-forward premium soda expression with tart red fruit, subtle evergreen lift, and a polished sparkling finish. It is designed to feel crisp and elevated rather than syrupy, with a visual world that fits colder seasonal merchandising and evening refreshment rituals.",
+      "priceCents": 380,
+      "currency": "EUR",
+      "size": "330 ml",
+      "image": "/images/winter/Pomegranate-Spruce.jpg",
+      "heroImage": "/images/winter/Pomegranate-Spruce.jpg",
+      "benefits": [
+        "Electrolytes",
+        "Low sugar",
+        "Prebiotic-inspired",
+        "Seasonal ritual"
+      ],
+      "ingredients": [
+        "Pomegranate",
+        "Spruce notes",
+        "Electrolytes",
+        "Sparkling base"
+      ],
+      "galleryImages": [
+        "/images/winter/Pomegranate-Spruce.jpg",
+        "/images/winter/winter_collection.jpg"
+      ]
+    },
+    {
+      "slug": "cranberry-evergreen",
+      "name": "Cranberry & Evergreen",
+      "flavor": "Fresh and forested",
+      "collectionSlug": "winter",
+      "description": "Bright cranberry layered with herbal coolness for a premium, wintry expression.",
+      "longDescription": "Cranberry & Evergreen balances bright acidity with cooler herbal freshness. It is styled to express winter clarity, botanical depth, and a more composed premium flavor architecture than conventional holiday soda concepts.",
+      "priceCents": 380,
+      "currency": "EUR",
+      "size": "330 ml",
+      "image": "/images/winter/Cranberry-Evergreen.jpg",
+      "heroImage": "/images/winter/Cranberry-Evergreen.jpg",
+      "benefits": [
+        "Hydration-forward",
+        "Botanical character",
+        "Low sugar",
+        "Elegant finish"
+      ],
+      "ingredients": [
+        "Cranberry",
+        "Evergreen botanicals",
+        "Electrolytes",
+        "Sparkling base"
+      ],
+      "galleryImages": [
+        "/images/winter/Cranberry-Evergreen.jpg",
+        "/images/winter/winter_collection.jpg"
+      ]
+    },
+    {
+      "slug": "spiced-pear",
+      "name": "Spiced Pear",
+      "flavor": "Warm orchard spice",
+      "collectionSlug": "winter",
+      "description": "Richer winter warmth with pear notes, aromatic spice, and a polished sparkling finish.",
+      "longDescription": "Spiced Pear adds warmth and seasonal depth to the Aura Winter Collection with orchard fruit, subtle spice, and a smoother amber profile. It is designed for colder evenings, festive meals, and more comforting winter refreshment moments.",
+      "priceCents": 390,
+      "currency": "EUR",
+      "size": "330 ml",
+      "image": "/images/winter/Spiced-Pear.jpg",
+      "heroImage": "/images/winter/Spiced-Pear.jpg",
+      "benefits": [
+        "Winter warmth",
+        "Low sugar",
+        "Seasonal expression",
+        "Sparkling lift"
+      ],
+      "ingredients": [
+        "Pear",
+        "Warming spice notes",
+        "Electrolytes",
+        "Sparkling base"
+      ],
+      "galleryImages": [
+        "/images/winter/Spiced-Pear.jpg",
+        "/images/winter/winter_collection.jpg"
+      ]
+    },
+    {
+      "slug": "bergamot-pine",
+      "name": "Bergamot & Pine",
+      "flavor": "Citrus forest freshness",
+      "collectionSlug": "winter",
+      "description": "A cool, botanical winter profile with bergamot brightness and clean evergreen depth.",
+      "longDescription": "Bergamot & Pine is the most lifted and aromatic expression in the Winter Collection, balancing citrus freshness with a cool forested finish. It provides a brighter premium winter option while staying inside Aura’s calm and elegant brand language.",
+      "priceCents": 390,
+      "currency": "EUR",
+      "size": "330 ml",
+      "image": "/images/winter/Bergamot-Pine.jpg",
+      "heroImage": "/images/winter/Bergamot-Pine.jpg",
+      "benefits": [
+        "Bright botanical profile",
+        "Citrus lift",
+        "Low sugar",
+        "Electrolyte-led"
+      ],
+      "ingredients": [
+        "Bergamot",
+        "Pine botanicals",
+        "Electrolytes",
+        "Sparkling base"
+      ],
+      "galleryImages": [
+        "/images/winter/Bergamot-Pine.jpg",
+        "/images/winter/winter_collection.jpg"
+      ]
+    },
+    {
+      "slug": "elderflower-lemon",
+      "name": "Elderflower & Lemon",
+      "flavor": "Lifted citrus bloom",
+      "collectionSlug": "spring",
+      "description": "An airy floral profile with subtle lemon brightness and a polished, botanical finish.",
+      "longDescription": "Elderflower & Lemon is designed as a clean, uplifting spring expression with elegant florals and crisp citrus lift. It is the closest profile to a refined hospitality-style welcome drink, but reinterpreted for daily wellness refreshment.",
+      "priceCents": 390,
+      "currency": "EUR",
+      "size": "330 ml",
+      "image": "/images/spring/Elderflower-Lemon.jpg",
+      "heroImage": "/images/spring/Elderflower-Lemon.jpg",
+      "benefits": [
+        "Bright hydration feel",
+        "Citrus freshness",
+        "Prebiotic-inspired",
+        "Spring profile"
+      ],
+      "ingredients": [
+        "Elderflower",
+        "Lemon",
+        "Electrolytes",
+        "Sparkling base"
+      ],
+      "galleryImages": [
+        "/images/spring/Elderflower-Lemon.jpg",
+        "/images/spring/spring-collection.jpg"
+      ]
+    },
+    {
+      "slug": "rose-hibiscus",
+      "name": "Rose & Hibiscus",
+      "flavor": "Soft floral acidity",
+      "collectionSlug": "spring",
+      "description": "Delicate yet vivid, with petal softness balanced by refreshing acidity and bubbles.",
+      "longDescription": "Rose & Hibiscus is the most floral expression in the Spring Collection, created for a premium soft-bloom experience. It pairs a romantic visual identity with crisp sparkling structure so the drink remains bright, airy, and modern rather than overly sweet.",
+      "priceCents": 390,
+      "currency": "EUR",
+      "size": "330 ml",
+      "image": "/images/spring/Rose-Hibiscus.jpg",
+      "heroImage": "/images/spring/Rose-Hibiscus.jpg",
+      "benefits": [
+        "Light botanical profile",
+        "Low sugar",
+        "Refreshing finish",
+        "Wellness-led feel"
+      ],
+      "ingredients": [
+        "Rose",
+        "Hibiscus",
+        "Electrolytes",
+        "Sparkling base"
+      ],
+      "galleryImages": [
+        "/images/spring/Rose-Hibiscus.jpg",
+        "/images/spring/spring-collection.jpg"
+      ]
+    },
+    {
+      "slug": "lavender-yuco",
+      "name": "Lavender & Yuco",
+      "flavor": "Herbal blossom calm",
+      "collectionSlug": "spring",
+      "description": "A floral-citrus expression with soft herbal notes and a bright, polished finish.",
+      "longDescription": "Lavender & Yuco adds a lighter, more aromatic spring personality to the range, balancing floral softness with lively fruit brightness. It is designed to feel premium, calm, and slightly unexpected while remaining easy to drink.",
+      "priceCents": 400,
+      "currency": "EUR",
+      "size": "330 ml",
+      "image": "/images/spring/Lavender-Yuco.jpg",
+      "heroImage": "/images/spring/Lavender-Yuco.jpg",
+      "benefits": [
+        "Aromatic profile",
+        "Spring brightness",
+        "Low sugar",
+        "Elegant finish"
+      ],
+      "ingredients": [
+        "Lavender",
+        "Yuco notes",
+        "Electrolytes",
+        "Sparkling base"
+      ],
+      "galleryImages": [
+        "/images/spring/Lavender-Yuco.jpg",
+        "/images/spring/spring-collection.jpg"
+      ]
+    },
+    {
+      "slug": "botanical-mint",
+      "name": "Botanical Mint",
+      "flavor": "Fresh green clarity",
+      "collectionSlug": "spring",
+      "description": "A clean, mint-led profile with fresh herbal character and a lightly sparkling finish.",
+      "longDescription": "Botanical Mint is the freshest and greenest expression in the Spring Collection, built around clarity, lift, and a clean cooling finish. It gives the range a more herbaceous premium option for daytime refreshment.",
+      "priceCents": 400,
+      "currency": "EUR",
+      "size": "330 ml",
+      "image": "/images/spring/Botanical-Mint.jpg",
+      "heroImage": "/images/spring/Botanical-Mint.jpg",
+      "benefits": [
+        "Fresh herbal profile",
+        "Cooling finish",
+        "Low sugar",
+        "Electrolyte-led"
+      ],
+      "ingredients": [
+        "Mint botanicals",
+        "Electrolytes",
+        "Sparkling base"
+      ],
+      "galleryImages": [
+        "/images/spring/Botanical-Mint.jpg",
+        "/images/spring/spring-collection.jpg"
+      ]
+    },
+    {
+      "slug": "tropical-mango-lime",
+      "name": "Tropical Mango & Lime",
+      "flavor": "Golden citrus energy",
+      "collectionSlug": "summer",
+      "description": "A vivid mango-led summer flavor with lime brightness and a polished sparkling finish.",
+      "longDescription": "Tropical Mango & Lime is a sunny premium summer expression built around juicy mango character, citrus lift, and warm-weather refreshment. It is designed to feel vibrant and social while remaining cleaner and more refined than conventional fruit soda.",
+      "priceCents": 410,
+      "currency": "EUR",
+      "size": "330 ml",
+      "image": "/images/summer/Tropical-Mango-Lime.jpg",
+      "heroImage": "/images/summer/Tropical-Mango-Lime.jpg",
+      "benefits": [
+        "Summer energy",
+        "Citrus lift",
+        "Low sugar",
+        "Hydration support"
+      ],
+      "ingredients": [
+        "Mango",
+        "Lime",
+        "Electrolytes",
+        "Sparkling base"
+      ],
+      "galleryImages": [
+        "/images/summer/Tropical-Mango-Lime.jpg",
+        "/images/summer/summer-collection.jpg"
+      ]
+    },
+    {
+      "slug": "watermelon-basil",
+      "name": "Watermelon Basil",
+      "flavor": "Juicy herb freshness",
+      "collectionSlug": "summer",
+      "description": "A refreshing fruit-and-herb combination with bright watermelon character and a cooling finish.",
+      "longDescription": "Watermelon Basil adds a fresher and more playful summer note to the range, balancing juicy fruit with green herbal lift. It is designed for daytime refreshment, outdoor occasions, and a softer premium summer mood.",
+      "priceCents": 410,
+      "currency": "EUR",
+      "size": "330 ml",
+      "image": "/images/summer/Watermelon-Basil.jpg",
+      "heroImage": "/images/summer/Watermelon-Basil.jpg",
+      "benefits": [
+        "Fresh summer profile",
+        "Herbal lift",
+        "Low sugar",
+        "Electrolyte-led"
+      ],
+      "ingredients": [
+        "Watermelon",
+        "Basil",
+        "Electrolytes",
+        "Sparkling base"
+      ],
+      "galleryImages": [
+        "/images/summer/Watermelon-Basil.jpg",
+        "/images/summer/summer-collection.jpg"
+      ]
+    },
+    {
+      "slug": "blood-orange-passionfruit",
+      "name": "Blood Orange & Passionfruit",
+      "flavor": "Bold citrus depth",
+      "collectionSlug": "summer",
+      "description": "A sharper citrus-fruit profile with vivid color, lively acidity, and a premium sparkling finish.",
+      "longDescription": "Blood Orange & Passionfruit is the boldest summer expression in the line, built around punchy citrus character and tropical depth. It gives the Summer Collection a more energetic, colorful flavor while staying inside Aura’s premium visual language.",
+      "priceCents": 415,
+      "currency": "EUR",
+      "size": "330 ml",
+      "image": "/images/summer/Blood-Orange-Passionfruit.jpg",
+      "heroImage": "/images/summer/Blood-Orange-Passionfruit.jpg",
+      "benefits": [
+        "Bright fruit profile",
+        "Active refreshment",
+        "Low sugar",
+        "Seasonal energy"
+      ],
+      "ingredients": [
+        "Blood orange",
+        "Passionfruit",
+        "Electrolytes",
+        "Sparkling base"
+      ],
+      "galleryImages": [
+        "/images/summer/Blood-Orange-Passionfruit.jpg",
+        "/images/summer/summer-collection.jpg"
+      ]
+    },
+    {
+      "slug": "pineapple-ginger",
+      "name": "Pineapple & Ginger",
+      "flavor": "Warm bright spice",
+      "collectionSlug": "summer",
+      "description": "A golden tropical profile with pineapple sweetness, ginger lift, and crisp sparkling structure.",
+      "longDescription": "Pineapple & Ginger rounds out the Summer Collection with a warmer yellow-fruit expression that combines brightness and spice. It is designed to feel easygoing, vivid, and premium across both casual and hospitality-inspired moments.",
+      "priceCents": 410,
+      "currency": "EUR",
+      "size": "330 ml",
+      "image": "/images/summer/Pineapple-Ginger.jpg",
+      "heroImage": "/images/summer/Pineapple-Ginger.jpg",
+      "benefits": [
+        "Tropical brightness",
+        "Ginger lift",
+        "Low sugar",
+        "Hydration-forward"
+      ],
+      "ingredients": [
+        "Pineapple",
+        "Ginger",
+        "Electrolytes",
+        "Sparkling base"
+      ],
+      "galleryImages": [
+        "/images/summer/Pineapple-Ginger.jpg",
+        "/images/summer/summer-collection.jpg"
+      ]
+    },
+    {
+      "slug": "apple-cinnamon",
+      "name": "Apple & Cinnamon",
+      "flavor": "Orchard warmth",
+      "collectionSlug": "autumn",
+      "description": "Rounded fruit sweetness lifted by aromatic spice and a more grounded seasonal finish.",
+      "longDescription": "Apple & Cinnamon is structured around orchard freshness and soft spice warmth. It gives Autumn a familiar but elevated beverage expression with richer comfort cues and polished seasonal depth.",
+      "priceCents": 395,
+      "currency": "EUR",
+      "size": "330 ml",
+      "image": "/images/autumn/Apple-Cinnamon.jpg",
+      "heroImage": "/images/autumn/Apple-Cinnamon.jpg",
+      "benefits": [
+        "Comfort profile",
+        "Warm spice notes",
+        "Low sugar",
+        "Seasonal appeal"
+      ],
+      "ingredients": [
+        "Apple",
+        "Cinnamon",
+        "Electrolytes",
+        "Sparkling base"
+      ],
+      "galleryImages": [
+        "/images/autumn/Apple-Cinnamon.jpg",
+        "/images/autumn/autumn-collection.jpg"
+      ]
+    },
+    {
+      "slug": "blackberry-sage",
+      "name": "Blackberry & Sage",
+      "flavor": "Dark botanical depth",
+      "collectionSlug": "autumn",
+      "description": "A deeper berry-led profile with herbal sage character and a rich premium finish.",
+      "longDescription": "Blackberry & Sage gives the Autumn Collection a darker, moodier flavor expression with berry depth and botanical lift. It is designed to balance comfort and sophistication in a more evening-oriented seasonal profile.",
+      "priceCents": 400,
+      "currency": "EUR",
+      "size": "330 ml",
+      "image": "/images/autumn/Blackberry-Sage.jpg",
+      "heroImage": "/images/autumn/Blackberry-Sage.jpg",
+      "benefits": [
+        "Berry depth",
+        "Botanical character",
+        "Low sugar",
+        "Premium seasonal feel"
+      ],
+      "ingredients": [
+        "Blackberry",
+        "Sage",
+        "Electrolytes",
+        "Sparkling base"
+      ],
+      "galleryImages": [
+        "/images/autumn/Blackberry-Sage.jpg",
+        "/images/autumn/autumn-collection.jpg"
+      ]
+    },
+    {
+      "slug": "spiced-pumpkin",
+      "name": "Spiced Pumpkin",
+      "flavor": "Toasted seasonal warmth",
+      "collectionSlug": "autumn",
+      "description": "A rich autumn flavor with pumpkin warmth, soft spice, and a smooth sparkling finish.",
+      "longDescription": "Spiced Pumpkin adds a more iconic harvest-season cue to the range, but keeps it refined through lighter sweetness and a cleaner structure. It is designed to evoke cozy autumn rituals without feeling heavy.",
+      "priceCents": 400,
+      "currency": "EUR",
+      "size": "330 ml",
+      "image": "/images/autumn/Spiced-Pumpkin.jpg",
+      "heroImage": "/images/autumn/Spiced-Pumpkin.jpg",
+      "benefits": [
+        "Harvest profile",
+        "Warm spice",
+        "Low sugar",
+        "Seasonal storytelling"
+      ],
+      "ingredients": [
+        "Pumpkin notes",
+        "Autumn spice",
+        "Electrolytes",
+        "Sparkling base"
+      ],
+      "galleryImages": [
+        "/images/autumn/Spiced-Pumpkin.jpg",
+        "/images/autumn/autumn-collection.jpg"
+      ]
+    },
+    {
+      "slug": "ginger-maple",
+      "name": "Ginger & Maple",
+      "flavor": "Warm mineral finish",
+      "collectionSlug": "autumn",
+      "description": "A richer seasonal flavor built around warmth, depth, and smooth sparkling structure.",
+      "longDescription": "Ginger & Maple is designed for a rounder, deeper seasonal profile with warmth, subtle sweetness, and sparkling lift. It supports autumn merchandising with a richer premium tone while remaining cleaner than dessert-style soda products.",
+      "priceCents": 395,
+      "currency": "EUR",
+      "size": "330 ml",
+      "image": "/images/autumn/Ginger-Maple.jpg",
+      "heroImage": "/images/autumn/Ginger-Maple.jpg",
+      "benefits": [
+        "Warm finish",
+        "Seasonal depth",
+        "Hydration-forward",
+        "Modern soda ritual"
+      ],
+      "ingredients": [
+        "Ginger",
+        "Maple notes",
+        "Electrolytes",
+        "Sparkling base"
+      ],
+      "galleryImages": [
+        "/images/autumn/Ginger-Maple.jpg",
+        "/images/autumn/autumn-collection.jpg"
+      ]
+    }
+  ]
+}

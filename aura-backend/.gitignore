@@ -12,3 +12,5 @@ pnpm-debug.log*
 
 .DS_Store
 coverage/
+
+/src/generated/prisma/
