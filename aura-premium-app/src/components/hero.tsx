@@ -68,13 +68,13 @@ export function Hero() {
             className="justify-self-start lg:justify-self-end"
           >
             <div className="premium-card max-w-[360px] rounded-[32px] border border-white/16 bg-white/10 p-6 text-white shadow-[0_24px_80px_rgba(0,0,0,0.18)] backdrop-blur-xl">
-              <div className="text-[11px] uppercase tracking-[0.28em] text-white/68">
+              <div className="text-[11px] uppercase tracking-[0.28em] text-[#6b4d39]">
                 Brand direction
               </div>
-              <h2 className="display-font mt-3 text-3xl leading-tight text-white">
+              <h2 className="display-font mt-3 text-3xl leading-tight text-[#6b4d39]">
                 A refined lifestyle for modern hydration
               </h2>
-              <p className="mt-4 text-sm leading-7 text-white/78">
+              <p className="mt-4 text-sm leading-7 text-[#332421]">
                 Seasonal flavor worlds, premium ingredients, and a softer visual
                 language that feels more like luxury hospitality than
                 conventional soda.
@@ -82,28 +82,28 @@ export function Hero() {
 
               <div className="mt-6 grid gap-3">
                 <div className="rounded-[22px] border border-white/12 bg-black/10 px-4 py-3">
-                  <div className="text-[11px] uppercase tracking-[0.22em] text-white/60">
+                  <div className="text-[11px] uppercase tracking-[0.22em] text-[#332421]">
                     Positioning
                   </div>
-                  <div className="mt-1 text-sm font-medium text-white/90">
+                  <div className="mt-1 text-sm font-medium text-[#332421]">
                     Premium electrolyte soda
                   </div>
                 </div>
 
                 <div className="rounded-[22px] border border-white/12 bg-black/10 px-4 py-3">
-                  <div className="text-[11px] uppercase tracking-[0.22em] text-white/60">
+                  <div className="text-[11px] uppercase tracking-[0.22em] text-[#332421]">
                     Experience
                   </div>
-                  <div className="mt-1 text-sm font-medium text-white/90">
+                  <div className="mt-1 text-sm font-medium text-[#332421]">
                     Botanical, sparkling, elevated
                   </div>
                 </div>
 
                 <div className="rounded-[22px] border border-white/12 bg-black/10 px-4 py-3">
-                  <div className="text-[11px] uppercase tracking-[0.22em] text-white/60">
+                  <div className="text-[11px] uppercase tracking-[0.22em] text-[#332421]">
                     Collections
                   </div>
-                  <div className="mt-1 text-sm font-medium text-white/90">
+                  <div className="mt-1 text-sm font-medium text-[#332421]">
                     Winter, Spring, Summer, Autumn
                   </div>
                 </div>
