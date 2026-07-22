@@ -5,6 +5,7 @@ import { CartProvider } from "../components/cart/cart-provider";
 import { CartShell } from "../components/cart/cart-shell";
 import { AuthProvider } from "../components/auth/auth-provider";
 import { FavoritesProvider } from "../components/favorites/favorites-provider";
+import { AuraChatbot } from "../components/chat/aura-chatbot";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -32,6 +33,7 @@ export default function RootLayout({
             </CartProvider>
           </FavoritesProvider>
         </AuthProvider>
+        <AuraChatbot />
       </body>
     </html>
   );
