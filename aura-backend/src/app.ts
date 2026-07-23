@@ -3,6 +3,7 @@ import express from 'express';
 
 import { errorMiddleware } from './middleware/error.middleware.js';
 import { notFoundMiddleware } from './middleware/not-found.middleware.js';
+import { authRouter } from './routes/auth.routes.js';
 import { collectionRouter } from './routes/collection.routes.js';
 import { healthRouter } from './routes/health.routes.js';
 import { productRouter } from './routes/product.routes.js';
@@ -16,6 +17,7 @@ app.use(
 );
 app.use(express.json());
 
+app.use('/api/auth', authRouter);
 app.use('/api', healthRouter);
 app.use('/api', productRouter);
 app.use('/api', collectionRouter);
