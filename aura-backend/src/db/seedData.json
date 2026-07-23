@@ -156,12 +156,7 @@
         "Prebiotic-inspired",
         "Spring profile"
       ],
-      "ingredients": [
-        "Elderflower",
-        "Lemon",
-        "Electrolytes",
-        "Sparkling base"
-      ],
+      "ingredients": ["Elderflower", "Lemon", "Electrolytes", "Sparkling base"],
       "galleryImages": [
         "/images/spring/Elderflower-Lemon.jpg",
         "/images/spring/spring-collection.jpg"
@@ -185,12 +180,7 @@
         "Refreshing finish",
         "Wellness-led feel"
       ],
-      "ingredients": [
-        "Rose",
-        "Hibiscus",
-        "Electrolytes",
-        "Sparkling base"
-      ],
+      "ingredients": ["Rose", "Hibiscus", "Electrolytes", "Sparkling base"],
       "galleryImages": [
         "/images/spring/Rose-Hibiscus.jpg",
         "/images/spring/spring-collection.jpg"
@@ -243,11 +233,7 @@
         "Low sugar",
         "Electrolyte-led"
       ],
-      "ingredients": [
-        "Mint botanicals",
-        "Electrolytes",
-        "Sparkling base"
-      ],
+      "ingredients": ["Mint botanicals", "Electrolytes", "Sparkling base"],
       "galleryImages": [
         "/images/spring/Botanical-Mint.jpg",
         "/images/spring/spring-collection.jpg"
@@ -271,12 +257,7 @@
         "Low sugar",
         "Hydration support"
       ],
-      "ingredients": [
-        "Mango",
-        "Lime",
-        "Electrolytes",
-        "Sparkling base"
-      ],
+      "ingredients": ["Mango", "Lime", "Electrolytes", "Sparkling base"],
       "galleryImages": [
         "/images/summer/Tropical-Mango-Lime.jpg",
         "/images/summer/summer-collection.jpg"
@@ -300,12 +281,7 @@
         "Low sugar",
         "Electrolyte-led"
       ],
-      "ingredients": [
-        "Watermelon",
-        "Basil",
-        "Electrolytes",
-        "Sparkling base"
-      ],
+      "ingredients": ["Watermelon", "Basil", "Electrolytes", "Sparkling base"],
       "galleryImages": [
         "/images/summer/Watermelon-Basil.jpg",
         "/images/summer/summer-collection.jpg"
@@ -358,12 +334,7 @@
         "Low sugar",
         "Hydration-forward"
       ],
-      "ingredients": [
-        "Pineapple",
-        "Ginger",
-        "Electrolytes",
-        "Sparkling base"
-      ],
+      "ingredients": ["Pineapple", "Ginger", "Electrolytes", "Sparkling base"],
       "galleryImages": [
         "/images/summer/Pineapple-Ginger.jpg",
         "/images/summer/summer-collection.jpg"
@@ -387,12 +358,7 @@
         "Low sugar",
         "Seasonal appeal"
       ],
-      "ingredients": [
-        "Apple",
-        "Cinnamon",
-        "Electrolytes",
-        "Sparkling base"
-      ],
+      "ingredients": ["Apple", "Cinnamon", "Electrolytes", "Sparkling base"],
       "galleryImages": [
         "/images/autumn/Apple-Cinnamon.jpg",
         "/images/autumn/autumn-collection.jpg"
@@ -416,12 +382,7 @@
         "Low sugar",
         "Premium seasonal feel"
       ],
-      "ingredients": [
-        "Blackberry",
-        "Sage",
-        "Electrolytes",
-        "Sparkling base"
-      ],
+      "ingredients": ["Blackberry", "Sage", "Electrolytes", "Sparkling base"],
       "galleryImages": [
         "/images/autumn/Blackberry-Sage.jpg",
         "/images/autumn/autumn-collection.jpg"
