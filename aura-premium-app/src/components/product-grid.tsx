@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import { useMemo, useState } from "react";
-import { products, type Product } from "./aura-data";
-import { ProductDrawer } from "./product-drawer";
+import { useMemo, useState } from 'react';
+import { products, type Product } from './aura-data';
+import { ProductDrawer } from './product-drawer';
 
-const filters = ["All", "Winter", "Spring", "Summer", "Autumn"] as const;
+const filters = ['All', 'Winter', 'Spring', 'Summer', 'Autumn'] as const;
 
 export function ProductGrid() {
-  const [active, setActive] = useState<(typeof filters)[number]>("All");
+  const [active, setActive] = useState<(typeof filters)[number]>('All');
   const [selected, setSelected] = useState<Product | null>(null);
 
   const filtered = useMemo(() => {
-    if (active === "All") return products;
+    if (active === 'All') return products;
     return products.filter((item) => item.collection === active);
   }, [active]);
 
@@ -35,8 +35,8 @@ export function ProductGrid() {
                 onClick={() => setActive(filter)}
                 className={`rounded-full px-4 py-2 text-sm transition ${
                   active === filter
-                    ? "bg-[var(--primary)] text-[var(--text-inverse)]"
-                    : "border border-[var(--surface-line)] text-[var(--text-muted)] hover:text-[var(--text)]"
+                    ? 'bg-[var(--primary)] text-[var(--text-inverse)]'
+                    : 'border border-[var(--surface-line)] text-[var(--text-muted)] hover:text-[var(--text)]'
                 }`}
               >
                 {filter}
@@ -56,7 +56,9 @@ export function ProductGrid() {
               </div>
 
               <div className="mb-3 flex items-center justify-between gap-3">
-                <span className={`rounded-full px-3 py-1 text-xs font-medium ${item.accent}`}>
+                <span
+                  className={`rounded-full px-3 py-1 text-xs font-medium ${item.accent}`}
+                >
                   {item.collection}
                 </span>
                 <span className="text-xs uppercase tracking-[0.2em] text-[var(--text-soft)]">

@@ -1,4 +1,4 @@
-import { benefits } from "./aura-data";
+import { benefits } from './aura-data';
 
 export function Benefits() {
   return (
@@ -14,12 +14,14 @@ export function Benefits() {
                 Pure Hydration, Powered by the Seasons
               </h2>
               <p className="mt-5 max-w-[48ch] leading-7 text-[var(--text-muted)]">
-                Seasonally Inspired Flavors: We capture the peak taste of every season, 
-                bringing you fresh, limited-run profiles that keep hydration exciting year-round.
-                Clean, Functional Hydration: Packed with essential electrolytes and zero refined 
-                sugars, Aura delivers targeted support for recovery, focus, and daily vitality.
-                A Better-for-You Experience: We offer the crisp, satisfying refreshment of traditional 
-                sodas—reimagined through a lens of modern wellness and active performance.
+                Seasonally Inspired Flavors: We capture the peak taste of every
+                season, bringing you fresh, limited-run profiles that keep
+                hydration exciting year-round. Clean, Functional Hydration:
+                Packed with essential electrolytes and zero refined sugars, Aura
+                delivers targeted support for recovery, focus, and daily
+                vitality. A Better-for-You Experience: We offer the crisp,
+                satisfying refreshment of traditional sodas—reimagined through a
+                lens of modern wellness and active performance.
               </p>
             </div>
 

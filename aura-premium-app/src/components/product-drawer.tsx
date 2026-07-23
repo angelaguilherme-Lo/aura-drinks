@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { AnimatePresence, motion } from "framer-motion";
-import type { Product } from "./aura-data";
-import { X } from "lucide-react";
+import { AnimatePresence, motion } from 'framer-motion';
+import type { Product } from './aura-data';
+import { X } from 'lucide-react';
 
 type Props = {
   product: Product | null;
@@ -23,10 +23,10 @@ export function ProductDrawer({ product, onClose }: Props) {
           />
 
           <motion.aside
-            initial={{ x: "100%" }}
+            initial={{ x: '100%' }}
             animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "spring", damping: 28, stiffness: 220 }}
+            exit={{ x: '100%' }}
+            transition={{ type: 'spring', damping: 28, stiffness: 220 }}
             className="fixed right-0 top-0 z-[80] h-screen w-full max-w-[520px] border-l border-white/10 bg-[var(--bg)] p-5 shadow-2xl"
           >
             <div className="premium-card flex h-full flex-col rounded-[28px] p-6">
@@ -51,7 +51,9 @@ export function ProductDrawer({ product, onClose }: Props) {
               </div>
 
               <div className="mb-4">
-                <span className={`rounded-full px-3 py-1 text-xs font-medium ${product.accent}`}>
+                <span
+                  className={`rounded-full px-3 py-1 text-xs font-medium ${product.accent}`}
+                >
                   {product.tone}
                 </span>
               </div>

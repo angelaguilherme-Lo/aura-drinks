@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useAuth } from "../../components/auth/auth-provider";
-import { Header } from "../../components/header";
+import { useState } from 'react';
+import Link from 'next/link';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useAuth } from '../../components/auth/auth-provider';
+import { Header } from '../../components/header';
 
 export default function SignupPage() {
   const { signUp, signInWithGoogle } = useAuth();
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const redirectTarget = searchParams.get("redirect") || "/account";
+  const redirectTarget = searchParams.get('redirect') || '/account';
 
   function handleSignup(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -105,7 +105,7 @@ export default function SignupPage() {
           </button>
 
           <p className="mt-6 text-sm text-[var(--text-muted)]">
-            Already have an account?{" "}
+            Already have an account?{' '}
             <Link href="/login" className="font-medium text-[var(--text)]">
               Sign in
             </Link>

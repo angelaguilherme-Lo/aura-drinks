@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { Header } from "../../components/header";
-import { AuthGuard } from "../../components/auth/auth-guard";
-import { useAuth } from "../../components/auth/auth-provider";
-import { useFavorites } from "../../components/favorites/favorites-provider";
+import Link from 'next/link';
+import { Header } from '../../components/header';
+import { AuthGuard } from '../../components/auth/auth-guard';
+import { useAuth } from '../../components/auth/auth-provider';
+import { useFavorites } from '../../components/favorites/favorites-provider';
 
 function getInitials(name: string) {
   return name
-    .split(" ")
+    .split(' ')
     .map((part) => part.charAt(0))
-    .join("")
+    .join('')
     .slice(0, 2)
     .toUpperCase();
 }
@@ -50,7 +50,7 @@ function AccountContent() {
                 Provider
               </p>
               <p className="mt-2 text-[var(--text)]">
-                {user.provider === "google" ? "Google demo" : "Email"}
+                {user.provider === 'google' ? 'Google demo' : 'Email'}
               </p>
             </div>
 
@@ -58,7 +58,9 @@ function AccountContent() {
               <p className="text-xs uppercase tracking-[0.18em] text-[var(--text-soft)]">
                 Favorites
               </p>
-              <p className="mt-2 text-[var(--text)]">{favorites.length} saved</p>
+              <p className="mt-2 text-[var(--text)]">
+                {favorites.length} saved
+              </p>
             </div>
           </div>
         </section>

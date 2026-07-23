@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { Header } from "../../components/header";
-import { AuthGuard } from "../../components/auth/auth-guard";
-import { useAuth } from "../../components/auth/auth-provider";
-import { useFavorites } from "../../components/favorites/favorites-provider";
-import { products } from "../../components/aura-data";
-import { ProductCard } from "../../components/shop/product-card";
+import Link from 'next/link';
+import { Header } from '../../components/header';
+import { AuthGuard } from '../../components/auth/auth-guard';
+import { useAuth } from '../../components/auth/auth-provider';
+import { useFavorites } from '../../components/favorites/favorites-provider';
+import { products } from '../../components/aura-data';
+import { ProductCard } from '../../components/shop/product-card';
 
 function FavoritesContent() {
   const { user } = useAuth();
@@ -48,7 +48,8 @@ function FavoritesContent() {
         <div className="mt-10 rounded-[32px] border border-dashed border-[var(--surface-line)] bg-white/90 p-10 text-center shadow-[0_18px_54px_rgba(30,20,10,0.05)]">
           <h2 className="text-2xl text-[var(--text)]">No favorites yet</h2>
           <p className="mx-auto mt-3 max-w-[42ch] text-[var(--text-muted)]">
-            Save your most-loved seasonal beverages and build your own curated Aura list.
+            Save your most-loved seasonal beverages and build your own curated
+            Aura list.
           </p>
           <Link
             href="/shop"

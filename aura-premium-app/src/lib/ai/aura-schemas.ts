@@ -1,30 +1,30 @@
 // lib/ai/aura-schemas.ts
-import { z } from "zod";
+import { z } from 'zod';
 
 export const AuraIntentSchema = z.enum([
-  "product_inquiry",
-  "ingredient_benefit_overview",
-  "collection_discovery",
-  "account_help",
-  "favorites_help",
-  "sign_in_help",
-  "shipping_help",
-  "checkout_help",
-  "demo_limitations",
-  "fallback_general",
+  'product_inquiry',
+  'ingredient_benefit_overview',
+  'collection_discovery',
+  'account_help',
+  'favorites_help',
+  'sign_in_help',
+  'shipping_help',
+  'checkout_help',
+  'demo_limitations',
+  'fallback_general',
 ]);
 
 export const ProductTagSchema = z.enum([
-  "citrus",
-  "floral",
-  "berry",
-  "herbal",
-  "spiced",
-  "refreshing",
-  "light",
-  "bold",
-  "botanical",
-  "seasonal",
+  'citrus',
+  'floral',
+  'berry',
+  'herbal',
+  'spiced',
+  'refreshing',
+  'light',
+  'bold',
+  'botanical',
+  'seasonal',
 ]);
 
 export const AuraProductSchema = z.object({
@@ -36,7 +36,7 @@ export const AuraProductSchema = z.object({
   benefits: z.array(z.string()).default([]),
   tags: z.array(ProductTagSchema).default([]),
   price: z.number().nonnegative(),
-  currency: z.string().default("EUR"),
+  currency: z.string().default('EUR'),
   available: z.boolean().default(true),
   featured: z.boolean().default(false),
 });
@@ -44,8 +44,10 @@ export const AuraProductSchema = z.object({
 export const AuraCollectionSchema = z.object({
   slug: z.string().min(1),
   name: z.string().min(1),
-  season: z.enum(["spring", "summer", "autumn", "winter", "core"]).default("core"),
-  description: z.string().default(""),
+  season: z
+    .enum(['spring', 'summer', 'autumn', 'winter', 'core'])
+    .default('core'),
+  description: z.string().default(''),
   productSlugs: z.array(z.string()).default([]),
 });
 
@@ -58,8 +60,8 @@ export const AuraDemoPoliciesSchema = z.object({
 });
 
 export const AuraCatalogSchema = z.object({
-  brand: z.literal("AURA"),
-  currency: z.string().default("EUR"),
+  brand: z.literal('AURA'),
+  currency: z.string().default('EUR'),
   collections: z.array(AuraCollectionSchema),
   products: z.array(AuraProductSchema),
   demoPolicies: AuraDemoPoliciesSchema,

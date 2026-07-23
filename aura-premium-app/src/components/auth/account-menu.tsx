@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { useAuth } from "./auth-provider";
+import Link from 'next/link';
+import { useAuth } from './auth-provider';
 
 function getInitials(name: string) {
   return name
-    .split(" ")
+    .split(' ')
     .map((part) => part.charAt(0))
-    .join("")
+    .join('')
     .slice(0, 2)
     .toUpperCase();
 }

@@ -1,12 +1,12 @@
 // app/api/assistant/route.ts
-import OpenAI from "openai";
-import { NextResponse } from "next/server";
-import { buildAuraPrompt } from "../../../lib/ai/build-aura-prompt";
-import { auraDemoCatalog } from "../../../lib/ai/aura-demo-catalog";
+import OpenAI from 'openai';
+import { NextResponse } from 'next/server';
+import { buildAuraPrompt } from '../../../lib/ai/build-aura-prompt';
+import { auraDemoCatalog } from '../../../lib/ai/aura-demo-catalog';
 import {
   AuraAssistantResultSchema,
   auraAssistantResultJsonSchema,
-} from "../../../lib/ai/aura-response-schema";
+} from '../../../lib/ai/aura-response-schema';
 
 const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -14,7 +14,7 @@ const client = new OpenAI({
 
 export async function POST(req: Request) {
   const body = await req.json();
-  const userMessage = String(body.message ?? "");
+  const userMessage = String(body.message ?? '');
 
   const { instructions, input } = buildAuraPrompt({
     userMessage,
@@ -22,12 +22,12 @@ export async function POST(req: Request) {
   });
 
   const response = await client.responses.create({
-    model: "gpt-5",
+    model: 'gpt-5',
     instructions,
     input,
     text: {
       format: {
-        type: "json_schema",
+        type: 'json_schema',
         ...auraAssistantResultJsonSchema,
       },
     },

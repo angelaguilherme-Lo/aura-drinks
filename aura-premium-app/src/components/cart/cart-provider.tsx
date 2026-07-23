@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   createContext,
@@ -6,8 +6,8 @@ import {
   useMemo,
   useState,
   type ReactNode,
-} from "react";
-import type { Product } from "../aura-data";
+} from 'react';
+import type { Product } from '../aura-data';
 
 export type CartItem = {
   product: Product;
@@ -31,7 +31,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   const addItem = (product: Product, quantity = 1) => {
     setItems((current) => {
-      const existing = current.find((item) => item.product.slug === product.slug);
+      const existing = current.find(
+        (item) => item.product.slug === product.slug
+      );
 
       if (existing) {
         return current.map((item) =>
@@ -72,7 +74,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
   );
 
   const subtotal = useMemo(
-    () => items.reduce((sum, item) => sum + item.product.price * item.quantity, 0),
+    () =>
+      items.reduce((sum, item) => sum + item.product.price * item.quantity, 0),
     [items]
   );
 
@@ -96,7 +99,7 @@ export function useCart() {
   const context = useContext(CartContext);
 
   if (!context) {
-    throw new Error("useCart must be used within a CartProvider");
+    throw new Error('useCart must be used within a CartProvider');
   }
 
   return context;

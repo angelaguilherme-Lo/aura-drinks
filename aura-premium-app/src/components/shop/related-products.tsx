@@ -1,5 +1,5 @@
-import Link from "next/link";
-import type { Product } from "../aura-data";
+import Link from 'next/link';
+import type { Product } from '../aura-data';
 
 export function RelatedProducts({ products }: { products: Product[] }) {
   if (!products.length) return null;

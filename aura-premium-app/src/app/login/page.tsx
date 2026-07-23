@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useAuth } from "../../components/auth/auth-provider";
-import { Header } from "../../components/header";
+import { useState } from 'react';
+import Link from 'next/link';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useAuth } from '../../components/auth/auth-provider';
+import { Header } from '../../components/header';
 
 export default function LoginPage() {
   const { signIn, signInWithGoogle } = useAuth();
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const redirectTarget = searchParams.get("redirect") || "/account";
+  const redirectTarget = searchParams.get('redirect') || '/account';
 
   function handleEmailLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -90,7 +90,7 @@ export default function LoginPage() {
           </button>
 
           <p className="mt-6 text-sm text-[var(--text-muted)]">
-            New to Aura?{" "}
+            New to Aura?{' '}
             <Link href="/signup" className="font-medium text-[var(--text)]">
               Create an account
             </Link>

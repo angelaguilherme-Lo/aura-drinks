@@ -1,7 +1,7 @@
-import { Header } from "../../components/header";
-import { Footer } from "../../components/footer";
-import { ProductGrid } from "../../components/shop/product-grid";
-import { BundleBuilder } from "../../components/shop/bundle-builder";
+import { Header } from '../../components/header';
+import { Footer } from '../../components/footer';
+import { ProductGrid } from '../../components/shop/product-grid';
+import { BundleBuilder } from '../../components/shop/bundle-builder';
 
 export default function ShopPage() {
   return (

@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useCart } from "./cart-provider";
+import { useCart } from './cart-provider';
 
 type CartDrawerProps = {
   open: boolean;
@@ -17,7 +17,9 @@ export function CartDrawer({ open, onClose }: CartDrawerProps) {
       <div className="flex h-full w-full max-w-[420px] flex-col bg-white shadow-2xl">
         <div className="flex items-center justify-between border-b border-[var(--surface-line)] px-6 py-5">
           <div>
-            <h2 className="text-lg font-semibold text-[var(--text)]">Your cart</h2>
+            <h2 className="text-lg font-semibold text-[var(--text)]">
+              Your cart
+            </h2>
             <p className="text-sm text-[var(--text-muted)]">
               Review your selected Aura drinks
             </p>
@@ -36,7 +38,9 @@ export function CartDrawer({ open, onClose }: CartDrawerProps) {
         <div className="flex-1 overflow-y-auto px-6 py-5">
           {items.length === 0 ? (
             <div className="rounded-[24px] border border-dashed border-[var(--surface-line)] bg-[var(--surface)] p-6 text-center">
-              <p className="text-sm text-[var(--text-muted)]">Your cart is empty.</p>
+              <p className="text-sm text-[var(--text-muted)]">
+                Your cart is empty.
+              </p>
             </div>
           ) : (
             <div className="space-y-4">

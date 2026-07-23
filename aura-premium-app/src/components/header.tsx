@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { CartTrigger } from "./cart/cart-trigger";
-import { useCartUi } from "./cart/cart-shell";
-import { AuraLogo } from "./aura-logo";
-import { AccountMenu } from "./auth/account-menu";
+import Link from 'next/link';
+import { CartTrigger } from './cart/cart-trigger';
+import { useCartUi } from './cart/cart-shell';
+import { AuraLogo } from './aura-logo';
+import { AccountMenu } from './auth/account-menu';
 
 const navItems = [
-  { href: "/", label: "Home" },
-  { href: "/shop", label: "Shop" },
-  { href: "/#collections", label: "Collections" },
-  { href: "/#benefits", label: "Benefits" },
-  { href: "/favorites", label: "Favorites" },
+  { href: '/', label: 'Home' },
+  { href: '/shop', label: 'Shop' },
+  { href: '/#collections', label: 'Collections' },
+  { href: '/#benefits', label: 'Benefits' },
+  { href: '/favorites', label: 'Favorites' },
 ];
 
 export function Header() {
