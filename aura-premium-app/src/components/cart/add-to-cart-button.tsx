@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import type { ReactNode } from "react";
-import type { Product } from "../aura-data";
-import { useCart } from "./cart-provider";
+import type { ReactNode } from 'react';
+import type { Product } from '../aura-data';
+import { useCart } from './cart-provider';
 
 type AddToCartButtonProps = {
   product: Product;
@@ -25,11 +25,11 @@ export function AddToCartButton({
       onClick={() => addItem(product, quantity)}
       className={
         className ??
-        "inline-flex h-11 items-center justify-center rounded-full bg-[#476f57] px-5 text-sm font-medium text-white transition hover:bg-[#3e624d]"
+        'inline-flex h-11 items-center justify-center rounded-full bg-[#476f57] px-5 text-sm font-medium text-white transition hover:bg-[#3e624d]'
       }
       aria-label={`Add ${product.name} to cart`}
     >
-      {children ?? "Add to cart"}
+      {children ?? 'Add to cart'}
     </button>
   );
 }

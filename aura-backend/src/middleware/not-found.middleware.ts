@@ -1,11 +1,11 @@
-import type { Request, Response } from "express";
+import type { Request, Response } from 'express';
 
 export function notFoundMiddleware(
   _request: Request,
-  response: Response,
+  response: Response
 ): void {
   response.status(404).json({
-    status: "error",
-    message: "Route not found",
+    status: 'error',
+    message: 'Route not found',
   });
 }

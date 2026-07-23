@@ -1,7 +1,13 @@
-"use client";
+'use client';
 
-import { createContext, useContext, useMemo, useState, type ReactNode } from "react";
-import { CartDrawer } from "./cart-drawer";
+import {
+  createContext,
+  useContext,
+  useMemo,
+  useState,
+  type ReactNode,
+} from 'react';
+import { CartDrawer } from './cart-drawer';
 
 type CartUiContextValue = {
   openCart: () => void;
@@ -33,7 +39,7 @@ export function useCartUi() {
   const context = useContext(CartUiContext);
 
   if (!context) {
-    throw new Error("useCartUi must be used within a CartShell");
+    throw new Error('useCartUi must be used within a CartShell');
   }
 
   return context;

@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { Moon, SunMedium } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Moon, SunMedium } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 export function ThemeToggle() {
   const [dark, setDark] = useState(false);
@@ -9,9 +9,11 @@ export function ThemeToggle() {
 
   useEffect(() => {
     const root = document.documentElement;
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const prefersDark = window.matchMedia(
+      '(prefers-color-scheme: dark)'
+    ).matches;
     if (prefersDark) {
-      root.classList.add("dark");
+      root.classList.add('dark');
       setDark(true);
     }
     setMounted(true);
@@ -19,8 +21,8 @@ export function ThemeToggle() {
 
   const toggle = () => {
     const root = document.documentElement;
-    root.classList.toggle("dark");
-    const isDark = root.classList.contains("dark");
+    root.classList.toggle('dark');
+    const isDark = root.classList.contains('dark');
     setDark(isDark);
   };
 

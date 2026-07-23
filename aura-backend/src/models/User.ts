@@ -1,4 +1,4 @@
-export type UserRole = "customer" | "admin";
+export type UserRole = 'customer' | 'admin';
 
 export interface User {
   id: string;
@@ -20,4 +20,4 @@ export interface CreateUserInput {
 }
 
 // passwordHash must never be returned by the API.
-export type PublicUser = Omit<User, "passwordHash">;
+export type PublicUser = Omit<User, 'passwordHash'>;

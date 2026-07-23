@@ -1,5 +1,5 @@
 // lib/ai/build-aura-prompt.ts
-import { AuraCatalog, AuraCatalogSchema } from "./aura-schemas";
+import { AuraCatalog, AuraCatalogSchema } from './aura-schemas';
 
 type BuildAuraPromptArgs = {
   userMessage: string;

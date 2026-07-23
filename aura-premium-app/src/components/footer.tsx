@@ -1,17 +1,17 @@
-import Link from "next/link";
-import { AuraLogo } from "./aura-logo";
+import Link from 'next/link';
+import { AuraLogo } from './aura-logo';
 
 const shopLinks = [
-  { href: "/shop", label: "Shop" },
-  { href: "/#collections", label: "Collections" },
-  { href: "/#benefits", label: "Benefits" },
-  { href: "/favorites", label: "Favorites" },
+  { href: '/shop', label: 'Shop' },
+  { href: '/#collections', label: 'Collections' },
+  { href: '/#benefits', label: 'Benefits' },
+  { href: '/favorites', label: 'Favorites' },
 ];
 
 const legalLinks = [
-  { href: "/terms", label: "Terms & Conditions" },
-  { href: "/privacy", label: "Privacy Policy" },
-  { href: "/impressum", label: "Impressum" },
+  { href: '/terms', label: 'Terms & Conditions' },
+  { href: '/privacy', label: 'Privacy Policy' },
+  { href: '/impressum', label: 'Impressum' },
 ];
 
 export function Footer() {

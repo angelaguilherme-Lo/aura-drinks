@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   createContext,
@@ -6,7 +6,7 @@ import {
   useMemo,
   useState,
   type ReactNode,
-} from "react";
+} from 'react';
 
 type FavoritesContextValue = {
   favorites: string[];
@@ -49,7 +49,7 @@ export function useFavorites() {
   const context = useContext(FavoritesContext);
 
   if (!context) {
-    throw new Error("useFavorites must be used within a FavoritesProvider");
+    throw new Error('useFavorites must be used within a FavoritesProvider');
   }
 
   return context;

@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { motion } from "framer-motion";
+import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 export function Hero() {
   return (
@@ -64,7 +64,11 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.85, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+            transition={{
+              duration: 0.85,
+              delay: 0.08,
+              ease: [0.16, 1, 0.3, 1],
+            }}
             className="justify-self-start lg:justify-self-end"
           >
             <div className="premium-card max-w-[360px] rounded-[32px] border border-white/16 bg-white/10 p-6 text-white shadow-[0_24px_80px_rgba(0,0,0,0.18)] backdrop-blur-xl">

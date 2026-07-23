@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useCart } from "./cart-provider";
+import { useCart } from './cart-provider';
 
 type CartTriggerProps = {
   onClick?: () => void;

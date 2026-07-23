@@ -1,9 +1,9 @@
-import { prisma } from "../db/prisma.js";
+import { prisma } from '../db/prisma.js';
 
 export function getPublicProducts() {
   return prisma.product.findMany({
     where: { active: true },
-    orderBy: { name: "asc" },
+    orderBy: { name: 'asc' },
     select: {
       id: true,
       slug: true,
@@ -55,15 +55,15 @@ export async function getPublicProductBySlug(slug: string) {
         },
       },
       benefits: {
-        orderBy: { position: "asc" },
+        orderBy: { position: 'asc' },
         select: { text: true },
       },
       ingredients: {
-        orderBy: { position: "asc" },
+        orderBy: { position: 'asc' },
         select: { name: true },
       },
       galleryImages: {
-        orderBy: { position: "asc" },
+        orderBy: { position: 'asc' },
         select: {
           url: true,
           altText: true,

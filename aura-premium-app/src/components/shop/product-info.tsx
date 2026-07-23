@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import type { Product } from "../aura-data";
-import { AddToCartButton } from "../cart/add-to-cart-button";
-import { FavoriteButton } from "../favorites/favorite-button";
+import { useState } from 'react';
+import type { Product } from '../aura-data';
+import { AddToCartButton } from '../cart/add-to-cart-button';
+import { FavoriteButton } from '../favorites/favorite-button';
 
 type ProductInfoProps = {
   product: Product;

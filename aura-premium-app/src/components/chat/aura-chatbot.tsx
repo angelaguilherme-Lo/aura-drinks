@@ -1,28 +1,28 @@
-"use client";
+'use client';
 
-import { useMemo, useRef, useState, useEffect } from "react";
+import { useMemo, useRef, useState, useEffect } from 'react';
 
 type ChatMessage = {
-  role: "user" | "assistant";
+  role: 'user' | 'assistant';
   content: string;
 };
 
 const starterQuestions = [
-  "Which drink is best for a floral taste?",
-  "What are the seasonal collections?",
-  "Can you help me with checkout?",
-  "Which flavors are best for summer?",
+  'Which drink is best for a floral taste?',
+  'What are the seasonal collections?',
+  'Can you help me with checkout?',
+  'Which flavors are best for summer?',
 ];
 
 export function AuraChatbot() {
   const [open, setOpen] = useState(false);
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
-      role: "assistant",
+      role: 'assistant',
       content:
-        "Hello — I’m the Aura assistant. I can help with flavors, collections, ingredients, favorites, accounts, and checkout questions.",
+        'Hello — I’m the Aura assistant. I can help with flavors, collections, ingredients, favorites, accounts, and checkout questions.',
     },
   ]);
 
@@ -40,18 +40,18 @@ export function AuraChatbot() {
 
     const nextMessages: ChatMessage[] = [
       ...messages,
-      { role: "user", content: text },
+      { role: 'user', content: text },
     ];
 
     setMessages(nextMessages);
-    setInput("");
+    setInput('');
     setLoading(true);
 
     try {
-      const res = await fetch("/api/chat", {
-        method: "POST",
+      const res = await fetch('/api/chat', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ messages: nextMessages }),
       });
@@ -61,19 +61,19 @@ export function AuraChatbot() {
       setMessages((current) => [
         ...current,
         {
-          role: "assistant",
+          role: 'assistant',
           content:
             data.message ??
-            "I’m sorry — I couldn’t generate a response just now.",
+            'I’m sorry — I couldn’t generate a response just now.',
         },
       ]);
     } catch {
       setMessages((current) => [
         ...current,
         {
-          role: "assistant",
+          role: 'assistant',
           content:
-            "I’m sorry — the assistant is temporarily unavailable. Please try again shortly.",
+            'I’m sorry — the assistant is temporarily unavailable. Please try again shortly.',
         },
       ]);
     } finally {
@@ -88,10 +88,10 @@ export function AuraChatbot() {
       <button
         type="button"
         onClick={() => setOpen((value) => !value)}
-        aria-label={open ? "Close Aura chat" : "Open Aura chat"}
+        aria-label={open ? 'Close Aura chat' : 'Open Aura chat'}
         className="fixed bottom-6 right-6 z-[70] inline-flex h-14 items-center justify-center rounded-full bg-[#476f57] px-6 text-sm font-medium text-white shadow-[0_18px_40px_rgba(71,111,87,0.35)] transition hover:bg-[#3d5f4a]"
       >
-        {open ? "Close chat" : "Ask Aura"}
+        {open ? 'Close chat' : 'Ask Aura'}
       </button>
 
       {open && (
@@ -104,7 +104,8 @@ export function AuraChatbot() {
               Product and checkout help
             </h2>
             <p className="mt-1 text-sm text-[var(--text-muted)]">
-              Ask about flavors, favorites, sign-in, collections, and demo checkout support.
+              Ask about flavors, favorites, sign-in, collections, and demo
+              checkout support.
             </p>
           </div>
 
@@ -116,14 +117,14 @@ export function AuraChatbot() {
               <div
                 key={`${message.role}-${index}`}
                 className={`flex ${
-                  message.role === "user" ? "justify-end" : "justify-start"
+                  message.role === 'user' ? 'justify-end' : 'justify-start'
                 }`}
               >
                 <div
                   className={`max-w-[85%] rounded-[24px] px-4 py-3 text-sm leading-7 ${
-                    message.role === "user"
-                      ? "bg-[#476f57] text-white"
-                      : "border border-[var(--surface-line)] bg-white text-[var(--text)]"
+                    message.role === 'user'
+                      ? 'bg-[#476f57] text-white'
+                      : 'border border-[var(--surface-line)] bg-white text-[var(--text)]'
                   }`}
                 >
                   {message.content}

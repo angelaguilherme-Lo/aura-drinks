@@ -1,8 +1,8 @@
-import { prisma } from "../db/prisma.js";
+import { prisma } from '../db/prisma.js';
 
 export async function getPublicCollections() {
   const collections = await prisma.collection.findMany({
-    orderBy: { name: "asc" },
+    orderBy: { name: 'asc' },
     select: {
       id: true,
       slug: true,
@@ -34,7 +34,7 @@ export function getPublicCollectionBySlug(slug: string) {
       description: true,
       products: {
         where: { active: true },
-        orderBy: { name: "asc" },
+        orderBy: { name: 'asc' },
         select: {
           id: true,
           slug: true,

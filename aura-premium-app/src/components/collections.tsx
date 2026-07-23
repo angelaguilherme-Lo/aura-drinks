@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
-import { collections } from "./aura-data";
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
+import { collections } from './aura-data';
 
 function getCollectionHref(id: string) {
   return `/shop?collection=${id}`;
@@ -24,9 +24,9 @@ export function Collections() {
           </div>
 
           <p className="max-w-[42ch] text-[var(--text-muted)]">
-            The Aura brand is strongest when the product world is grouped by season,
-            mood, and visual character, so the interface merchandises flavors as curated
-            collections rather than a flat catalog.
+            The Aura brand is strongest when the product world is grouped by
+            season, mood, and visual character, so the interface merchandises
+            flavors as curated collections rather than a flat catalog.
           </p>
         </div>
 
@@ -56,7 +56,9 @@ export function Collections() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/22 via-black/8 to-transparent" />
                   </div>
                 ) : (
-                  <div className={`h-[320px] w-full bg-gradient-to-br ${item.accent}`} />
+                  <div
+                    className={`h-[320px] w-full bg-gradient-to-br ${item.accent}`}
+                  />
                 )}
 
                 <div className="flex min-h-[250px] flex-col p-6 md:p-7">

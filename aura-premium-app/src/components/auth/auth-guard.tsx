@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useEffect, type ReactNode } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useAuth } from "./auth-provider";
+import { useEffect, type ReactNode } from 'react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useAuth } from './auth-provider';
 
 type AuthGuardProps = {
   children: ReactNode;

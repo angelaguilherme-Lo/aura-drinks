@@ -1,16 +1,13 @@
-"use client";
+'use client';
 
-import { useFavorites } from "./favorites-provider";
+import { useFavorites } from './favorites-provider';
 
 type FavoriteButtonProps = {
   slug: string;
   className?: string;
 };
 
-export function FavoriteButton({
-  slug,
-  className = "",
-}: FavoriteButtonProps) {
+export function FavoriteButton({ slug, className = '' }: FavoriteButtonProps) {
   const { isFavorite, toggleFavorite } = useFavorites();
   const active = isFavorite(slug);
 
@@ -19,15 +16,17 @@ export function FavoriteButton({
       type="button"
       onClick={() => toggleFavorite(slug)}
       aria-pressed={active}
-      aria-label={active ? "Remove from favorites" : "Add to favorites"}
+      aria-label={active ? 'Remove from favorites' : 'Add to favorites'}
       className={`inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--surface-line)] bg-white/92 text-[var(--text)] shadow-[0_10px_24px_rgba(30,20,10,0.08)] backdrop-blur-sm transition hover:bg-white hover:shadow-[0_14px_28px_rgba(30,20,10,0.10)] ${className}`}
     >
       <svg
         viewBox="0 0 24 24"
         className={`h-[18px] w-[18px] transition duration-200 ${
-          active ? "scale-100 text-[#476f57]" : "scale-100 text-[var(--text-muted)]"
+          active
+            ? 'scale-100 text-[#476f57]'
+            : 'scale-100 text-[var(--text-muted)]'
         }`}
-        fill={active ? "currentColor" : "none"}
+        fill={active ? 'currentColor' : 'none'}
         stroke="currentColor"
         strokeWidth="1.8"
         strokeLinecap="round"

@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { useMemo, useState } from "react";
-import { products } from "../aura-data";
-import { ProductCard } from "./product-card";
+import { useMemo, useState } from 'react';
+import { products } from '../aura-data';
+import { ProductCard } from './product-card';
 
-const filters = ["All", "Winter", "Spring", "Summer", "Autumn"] as const;
+const filters = ['All', 'Winter', 'Spring', 'Summer', 'Autumn'] as const;
 
 export function ProductGrid() {
-  const [active, setActive] = useState<(typeof filters)[number]>("All");
+  const [active, setActive] = useState<(typeof filters)[number]>('All');
 
   const filtered = useMemo(() => {
-    if (active === "All") return products;
+    if (active === 'All') return products;
     return products.filter((item) => item.collection === active);
   }, [active]);
 
@@ -34,8 +34,8 @@ export function ProductGrid() {
                 onClick={() => setActive(filter)}
                 className={`rounded-full px-4 py-2 text-sm transition ${
                   active === filter
-                    ? "bg-[var(--primary)] text-[var(--text-inverse)]"
-                    : "border border-[var(--surface-line)] text-[var(--text-muted)] hover:text-[var(--text)]"
+                    ? 'bg-[var(--primary)] text-[var(--text-inverse)]'
+                    : 'border border-[var(--surface-line)] text-[var(--text-muted)] hover:text-[var(--text)]'
                 }`}
               >
                 {filter}

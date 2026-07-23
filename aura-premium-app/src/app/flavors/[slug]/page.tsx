@@ -1,14 +1,14 @@
-import { notFound } from "next/navigation";
+import { notFound } from 'next/navigation';
 import {
   getProductBySlug,
   getRelatedProducts,
   products,
-} from "../../../components/aura-data";
-import { Header } from "../../../components/header";
-import { Footer } from "../../../components/footer";
-import { ProductGallery } from "../../../components/shop/product-gallery";
-import { ProductInfo } from "../../../components/shop/product-info";
-import { RelatedProducts } from "../../../components/shop/related-products";
+} from '../../../components/aura-data';
+import { Header } from '../../../components/header';
+import { Footer } from '../../../components/footer';
+import { ProductGallery } from '../../../components/shop/product-gallery';
+import { ProductInfo } from '../../../components/shop/product-info';
+import { RelatedProducts } from '../../../components/shop/related-products';
 
 export function generateStaticParams() {
   return products.map((product) => ({

@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { useMemo } from "react";
-import { products, type Product } from "../aura-data";
-import { useCart } from "../cart/cart-provider";
+import Link from 'next/link';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { useMemo } from 'react';
+import { products, type Product } from '../aura-data';
+import { useCart } from '../cart/cart-provider';
 
 const featuredBundleSlugs = [
-  "pomegranate-spruce",
-  "cranberry-evergreen",
-  "spiced-pear",
-  "bergamot-pine",
+  'pomegranate-spruce',
+  'cranberry-evergreen',
+  'spiced-pear',
+  'bergamot-pine',
 ] as const;
 
-function getSeasonBadge(collection: Product["collection"]) {
+function getSeasonBadge(collection: Product['collection']) {
   return `${collection} Collection`;
 }
 
@@ -42,9 +42,10 @@ export function BundleBuilder() {
               </h2>
 
               <p className="mt-6 max-w-[42ch] text-[15px] leading-8 text-[var(--text-muted)]">
-                Premium seasonal selection works best when discovery and purchase are
-                combined. Start with a curated bundle and mix flavors across winter berry,
-                spring botanicals, summer citrus, and autumn spice.
+                Premium seasonal selection works best when discovery and
+                purchase are combined. Start with a curated bundle and mix
+                flavors across winter berry, spring botanicals, summer citrus,
+                and autumn spice.
               </p>
 
               <div className="mt-8 space-y-3 text-sm leading-7 text-[var(--text-muted)]">

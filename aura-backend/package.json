@@ -9,6 +9,8 @@
     "build": "tsc",
     "start": "node dist/server.js",
     "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "prisma:generate": "prisma generate",
     "prisma:migrate:dev": "prisma migrate dev",
     "prisma:migrate:deploy": "prisma migrate deploy",
@@ -24,6 +26,7 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/pg": "^8.20.0",
+    "prettier": "^3.9.6",
     "prisma": "^7.9.0",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3"
