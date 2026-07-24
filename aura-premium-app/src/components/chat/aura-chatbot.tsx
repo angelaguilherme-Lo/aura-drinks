@@ -84,15 +84,15 @@ export function AuraChatbot() {
   const quickActions = useMemo(() => starterQuestions, []);
 
   return (
-    <>
-      <button
-        type="button"
-        onClick={() => setOpen((value) => !value)}
-        aria-label={open ? 'Close Aura chat' : 'Open Aura chat'}
-        className="fixed bottom-6 right-6 z-[70] inline-flex h-14 items-center justify-center rounded-full bg-[#476f57] px-6 text-sm font-medium text-white shadow-[0_18px_40px_rgba(71,111,87,0.35)] transition hover:bg-[#3d5f4a]"
-      >
-        {open ? 'Close chat' : 'Ask Aura'}
-      </button>
+  <>
+    <button
+      type="button"
+      onClick={() => setOpen((value) => !value)}
+      aria-label={open ? "Close Aura chat" : "Open Aura chat"}
+      className="fixed bottom-6 left-6 z-[70] inline-flex h-14 items-center justify-center rounded-full bg-[#476f57] px-6 text-sm font-medium text-white shadow-[0_18px_40px_rgba(71,111,87,0.35)] transition hover:bg-[#3d5f4a]"
+    >
+      {open ? "Close chat" : "Ask Aura"}
+    </button>
 
       {open && (
         <section className="fixed bottom-24 right-6 z-[70] flex h-[min(78vh,720px)] w-[min(92vw,420px)] flex-col overflow-hidden rounded-[32px] border border-[var(--surface-line)] bg-[rgba(255,252,246,0.96)] shadow-[0_28px_80px_rgba(32,22,12,0.18)] backdrop-blur-xl">
