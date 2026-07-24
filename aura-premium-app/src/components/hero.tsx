@@ -73,7 +73,7 @@ export function Hero() {
           >
             <div className="premium-card max-w-[360px] rounded-[32px] border border-white/16 bg-white/10 p-6 text-white shadow-[0_24px_80px_rgba(0,0,0,0.18)] backdrop-blur-xl">
               <div className="text-[11px] uppercase tracking-[0.28em] text-[#6b4d39]">
-                Brand direction
+                
               </div>
               <h2 className="display-font mt-3 text-3xl leading-tight text-[#6b4d39]">
                 A refined lifestyle for modern hydration
