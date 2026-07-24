@@ -14,6 +14,14 @@ enum UserRole {
   @@map("user_role")
 }
 
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+
+  @@map("order_status")
+}
+
 model User {
   id           String   @id @default(uuid()) @db.Uuid
   firstName    String   @map("first_name")
@@ -23,6 +31,7 @@ model User {
   role         UserRole @default(CUSTOMER)
   createdAt    DateTime @default(now()) @map("created_at")
   updatedAt    DateTime @updatedAt @map("updated_at")
+  orders       Order[]
 
   @@map("users")
 }
@@ -59,10 +68,42 @@ model Product {
   benefits        ProductBenefit[]
   ingredients     ProductIngredient[]
   galleryImages   ProductGalleryImage[]
+  orderItems      OrderItem[]
 
   @@index([collectionId])
   @@index([active])
   @@map("products")
+}
+
+model Order {
+  id         String      @id @default(uuid()) @db.Uuid
+  userId     String      @map("user_id") @db.Uuid
+  status     OrderStatus @default(PENDING)
+  totalCents Int         @map("total_cents")
+  currency   String      @default("EUR") @db.VarChar(3)
+  createdAt  DateTime    @default(now()) @map("created_at")
+  updatedAt  DateTime    @updatedAt @map("updated_at")
+  user       User        @relation(fields: [userId], references: [id], onDelete: Restrict)
+  items      OrderItem[]
+
+  @@index([userId, createdAt])
+  @@map("orders")
+}
+
+model OrderItem {
+  id             String   @id @default(uuid()) @db.Uuid
+  orderId        String   @map("order_id") @db.Uuid
+  productId      String   @map("product_id") @db.Uuid
+  quantity       Int
+  productName    String   @map("product_name")
+  unitPriceCents Int      @map("unit_price_cents")
+  createdAt      DateTime @default(now()) @map("created_at")
+  order          Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product        Product  @relation(fields: [productId], references: [id], onDelete: Restrict)
+
+  @@unique([orderId, productId])
+  @@index([productId])
+  @@map("order_items")
 }
 
 model ProductBenefit {
