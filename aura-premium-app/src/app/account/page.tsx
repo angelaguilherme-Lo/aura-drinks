@@ -21,6 +21,8 @@ function AccountContent() {
 
   if (!user) return null;
 
+  const fullName = `${user.firstName} ${user.lastName}`.trim();
+
   return (
     <div className="mx-auto max-w-[960px]">
       <p className="text-xs uppercase tracking-[0.22em] text-[var(--text-soft)]">
@@ -35,11 +37,11 @@ function AccountContent() {
         <section className="rounded-[32px] border border-[var(--surface-line)] bg-white/92 p-8 shadow-[0_24px_64px_rgba(30,20,10,0.08)]">
           <div className="flex items-center gap-4">
             <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-[#476f57] text-lg font-semibold text-white">
-              {getInitials(user.name)}
+              {getInitials(fullName)}
             </div>
 
             <div>
-              <h2 className="text-2xl text-[var(--text)]">{user.name}</h2>
+              <h2 className="text-2xl text-[var(--text)]">{fullName}</h2>
               <p className="text-sm text-[var(--text-muted)]">{user.email}</p>
             </div>
           </div>
@@ -47,11 +49,9 @@ function AccountContent() {
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
             <div className="rounded-[24px] border border-[var(--surface-line)] bg-[var(--surface)] p-5">
               <p className="text-xs uppercase tracking-[0.18em] text-[var(--text-soft)]">
-                Provider
+                Role
               </p>
-              <p className="mt-2 text-[var(--text)]">
-                {user.provider === 'google' ? 'Google demo' : 'Email'}
-              </p>
+              <p className="mt-2 text-[var(--text)]">{user.role}</p>
             </div>
 
             <div className="rounded-[24px] border border-[var(--surface-line)] bg-[var(--surface)] p-5">

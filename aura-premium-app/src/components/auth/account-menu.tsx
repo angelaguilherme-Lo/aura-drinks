@@ -35,6 +35,8 @@ export function AccountMenu() {
     );
   }
 
+  const fullName = `${user.firstName} ${user.lastName}`.trim();
+
   return (
     <div className="flex items-center gap-3">
       <Link
@@ -49,9 +51,9 @@ export function AccountMenu() {
         className="inline-flex h-11 items-center justify-center gap-3 rounded-full border border-[var(--surface-line)] bg-white px-4 text-sm font-medium text-[var(--text)] transition hover:bg-[var(--surface)]"
       >
         <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#476f57] text-xs font-semibold text-white">
-          {getInitials(user.name)}
+          {getInitials(fullName)}
         </span>
-        <span className="hidden sm:inline">{user.name}</span>
+        <span className="hidden sm:inline">{fullName}</span>
       </Link>
 
       <button

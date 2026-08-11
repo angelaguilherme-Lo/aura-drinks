@@ -5,27 +5,29 @@ import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '../../components/auth/auth-provider';
 import { Header } from '../../components/header';
+import { getSafeRedirectTarget } from '../../lib/auth-api';
 
 export default function SignupPage() {
-  const { signUp, signInWithGoogle } = useAuth();
+  const { signUp, isLoading, error } = useAuth();
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const [name, setName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const redirectTarget = searchParams.get('redirect') || '/account';
+  const redirectTarget = getSafeRedirectTarget(searchParams.get('redirect'));
 
-  function handleSignup(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSignup(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    signUp({ name, email, password });
-    router.push(redirectTarget);
-  }
 
-  function handleGoogleSignup() {
-    signInWithGoogle();
-    router.push(redirectTarget);
+    try {
+      await signUp({ firstName, lastName, email, password });
+      router.push(redirectTarget);
+    } catch {
+      // The provider exposes a user-safe error message.
+    }
   }
 
   return (
@@ -42,21 +44,35 @@ export default function SignupPage() {
           </h1>
 
           <p className="mt-3 text-[15px] leading-7 text-[var(--text-muted)]">
-            Create a demo profile to save favorites and access your account.
+            Create your profile to access your Aura account.
           </p>
 
           <form onSubmit={handleSignup} className="mt-8 space-y-4">
             <div>
               <label className="mb-2 block text-sm font-medium text-[var(--text)]">
-                Full name
+                First name
               </label>
               <input
                 type="text"
                 required
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
                 className="h-12 w-full rounded-2xl border border-[var(--surface-line)] bg-white px-4 text-[var(--text)] outline-none focus:border-[#476f57]"
-                placeholder="Your name"
+                placeholder="Your first name"
+              />
+            </div>
+
+            <div>
+              <label className="mb-2 block text-sm font-medium text-[var(--text)]">
+                Last name
+              </label>
+              <input
+                type="text"
+                required
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                className="h-12 w-full rounded-2xl border border-[var(--surface-line)] bg-white px-4 text-[var(--text)] outline-none focus:border-[#476f57]"
+                placeholder="Your last name"
               />
             </div>
 
@@ -81,28 +97,28 @@ export default function SignupPage() {
               <input
                 type="password"
                 required
+                minLength={8}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="h-12 w-full rounded-2xl border border-[var(--surface-line)] bg-white px-4 text-[var(--text)] outline-none focus:border-[#476f57]"
-                placeholder="Create password"
+                placeholder="At least 8 characters"
               />
             </div>
 
+            {error && (
+              <p role="alert" className="text-sm text-red-700">
+                {error}
+              </p>
+            )}
+
             <button
               type="submit"
-              className="inline-flex h-12 w-full items-center justify-center rounded-full bg-[#476f57] px-5 text-sm font-medium text-white transition hover:bg-[#3d5f4a]"
+              disabled={isLoading}
+              className="inline-flex h-12 w-full items-center justify-center rounded-full bg-[#476f57] px-5 text-sm font-medium text-white transition hover:bg-[#3d5f4a] disabled:cursor-not-allowed disabled:opacity-60"
             >
-              Create account with email
+              {isLoading ? 'Creating account...' : 'Create account with email'}
             </button>
           </form>
-
-          <button
-            type="button"
-            onClick={handleGoogleSignup}
-            className="mt-4 inline-flex h-12 w-full items-center justify-center rounded-full border border-[var(--surface-line)] bg-white px-5 text-sm font-medium text-[var(--text)] transition hover:bg-[var(--surface)]"
-          >
-            Continue with Google
-          </button>
 
           <p className="mt-6 text-sm text-[var(--text-muted)]">
             Already have an account?{' '}
