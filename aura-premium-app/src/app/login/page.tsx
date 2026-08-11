@@ -5,26 +5,27 @@ import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '../../components/auth/auth-provider';
 import { Header } from '../../components/header';
+import { getSafeRedirectTarget } from '../../lib/auth-api';
 
 export default function LoginPage() {
-  const { signIn, signInWithGoogle } = useAuth();
+  const { signIn, isLoading, error } = useAuth();
   const router = useRouter();
   const searchParams = useSearchParams();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const redirectTarget = searchParams.get('redirect') || '/account';
+  const redirectTarget = getSafeRedirectTarget(searchParams.get('redirect'));
 
-  function handleEmailLogin(e: React.FormEvent<HTMLFormElement>) {
+  async function handleEmailLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    signIn({ email, password });
-    router.push(redirectTarget);
-  }
 
-  function handleGoogleLogin() {
-    signInWithGoogle();
-    router.push(redirectTarget);
+    try {
+      await signIn({ email, password });
+      router.push(redirectTarget);
+    } catch {
+      // The provider exposes a user-safe error message.
+    }
   }
 
   return (
@@ -41,7 +42,7 @@ export default function LoginPage() {
           </h1>
 
           <p className="mt-3 text-[15px] leading-7 text-[var(--text-muted)]">
-            Use your email or the demo Google sign-in to access your account.
+            Use your email and password to access your account.
           </p>
 
           <form onSubmit={handleEmailLogin} className="mt-8 space-y-4">
@@ -73,21 +74,20 @@ export default function LoginPage() {
               />
             </div>
 
+            {error && (
+              <p role="alert" className="text-sm text-red-700">
+                {error}
+              </p>
+            )}
+
             <button
               type="submit"
-              className="inline-flex h-12 w-full items-center justify-center rounded-full bg-[#476f57] px-5 text-sm font-medium text-white transition hover:bg-[#3d5f4a]"
+              disabled={isLoading}
+              className="inline-flex h-12 w-full items-center justify-center rounded-full bg-[#476f57] px-5 text-sm font-medium text-white transition hover:bg-[#3d5f4a] disabled:cursor-not-allowed disabled:opacity-60"
             >
-              Sign in with email
+              {isLoading ? 'Signing in...' : 'Sign in with email'}
             </button>
           </form>
-
-          <button
-            type="button"
-            onClick={handleGoogleLogin}
-            className="mt-4 inline-flex h-12 w-full items-center justify-center rounded-full border border-[var(--surface-line)] bg-white px-5 text-sm font-medium text-[var(--text)] transition hover:bg-[var(--surface)]"
-          >
-            Continue with Google
-          </button>
 
           <p className="mt-6 text-sm text-[var(--text-muted)]">
             New to Aura?{' '}
