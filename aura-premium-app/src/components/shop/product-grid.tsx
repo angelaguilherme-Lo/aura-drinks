@@ -1,18 +1,43 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { products } from '../aura-data';
+import { getCollectionLabel } from '../../lib/catalog/presentation';
+import type {
+  CollectionSummary,
+  ProductSummary,
+} from '../../lib/catalog/types';
 import { ProductCard } from './product-card';
 
-const filters = ['All', 'Winter', 'Spring', 'Summer', 'Autumn'] as const;
+type ProductGridProps = {
+  products: ProductSummary[];
+  collections: CollectionSummary[];
+  initialCollectionSlug?: string;
+};
 
-export function ProductGrid() {
-  const [active, setActive] = useState<(typeof filters)[number]>('All');
+export function ProductGrid({
+  products,
+  collections,
+  initialCollectionSlug,
+}: ProductGridProps) {
+  const validInitialSlug = collections.some(
+    (collection) => collection.slug === initialCollectionSlug
+  )
+    ? initialCollectionSlug
+    : 'all';
+  const [active, setActive] = useState(validInitialSlug);
 
   const filtered = useMemo(() => {
-    if (active === 'All') return products;
-    return products.filter((item) => item.collection === active);
-  }, [active]);
+    if (active === 'all') return products;
+    return products.filter((item) => item.collection.slug === active);
+  }, [active, products]);
+
+  const filters = [
+    { slug: 'all', label: 'All' },
+    ...collections.map((collection) => ({
+      slug: collection.slug,
+      label: getCollectionLabel(collection.name),
+    })),
+  ];
 
   return (
     <section id="products" className="section-space">
@@ -30,25 +55,31 @@ export function ProductGrid() {
           <div className="flex flex-wrap gap-2">
             {filters.map((filter) => (
               <button
-                key={filter}
-                onClick={() => setActive(filter)}
+                key={filter.slug}
+                onClick={() => setActive(filter.slug)}
                 className={`rounded-full px-4 py-2 text-sm transition ${
-                  active === filter
+                  active === filter.slug
                     ? 'bg-[var(--primary)] text-[var(--text-inverse)]'
                     : 'border border-[var(--surface-line)] text-[var(--text-muted)] hover:text-[var(--text)]'
                 }`}
               >
-                {filter}
+                {filter.label}
               </button>
             ))}
           </div>
         </div>
 
-        <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
-          {filtered.map((item) => (
-            <ProductCard key={item.id} product={item} />
-          ))}
-        </div>
+        {filtered.length > 0 ? (
+          <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+            {filtered.map((item) => (
+              <ProductCard key={item.id} product={item} />
+            ))}
+          </div>
+        ) : (
+          <div className="rounded-[28px] border border-dashed border-[var(--surface-line)] bg-white/80 p-10 text-center text-[var(--text-muted)]">
+            No active products are available in this collection.
+          </div>
+        )}
       </div>
     </section>
   );

@@ -4,7 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useMemo } from 'react';
-import { products, type Product } from '../aura-data';
+import { formatPrice } from '../../lib/catalog/price';
+import type { ProductSummary } from '../../lib/catalog/types';
 import { useCart } from '../cart/cart-provider';
 
 const featuredBundleSlugs = [
@@ -14,18 +15,14 @@ const featuredBundleSlugs = [
   'bergamot-pine',
 ] as const;
 
-function getSeasonBadge(collection: Product['collection']) {
-  return `${collection} Collection`;
-}
-
-export function BundleBuilder() {
+export function BundleBuilder({ products }: { products: ProductSummary[] }) {
   const { addItem } = useCart();
 
-  const featuredProducts = useMemo<Product[]>(() => {
+  const featuredProducts = useMemo<ProductSummary[]>(() => {
     return featuredBundleSlugs
       .map((slug) => products.find((product) => product.slug === slug))
-      .filter((product): product is Product => product !== undefined);
-  }, []);
+      .filter((product): product is ProductSummary => product !== undefined);
+  }, [products]);
 
   return (
     <section className="section-space">
@@ -88,11 +85,11 @@ export function BundleBuilder() {
                   <div className="flex flex-1 flex-col p-5">
                     <div className="flex items-start justify-between gap-3">
                       <span className="inline-flex items-center rounded-full bg-[#132821] px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-[#dbffe6]">
-                        {getSeasonBadge(product.collection)}
+                        {product.collection.name}
                       </span>
 
                       <span className="pt-1 text-sm font-medium text-[var(--text-soft)]">
-                        €{product.price.toFixed(2)}
+                        {formatPrice(product.priceCents, product.currency)}
                       </span>
                     </div>
 

@@ -1,7 +1,23 @@
 import Link from 'next/link';
-import type { Product } from '../aura-data';
+import type { ProductSummary } from '../../lib/catalog/types';
 
-export function RelatedProducts({ products }: { products: Product[] }) {
+export function RelatedProducts({
+  products,
+  errorMessage,
+}: {
+  products: ProductSummary[];
+  errorMessage?: string;
+}) {
+  if (errorMessage) {
+    return (
+      <section className="section-space">
+        <div className="container-shell text-sm text-[var(--text-muted)]">
+          {errorMessage}
+        </div>
+      </section>
+    );
+  }
+
   if (!products.length) return null;
 
   return (
@@ -23,25 +39,16 @@ export function RelatedProducts({ products }: { products: Product[] }) {
               href={`/flavors/${product.slug}`}
               className="premium-card overflow-hidden rounded-[28px] p-0 transition hover:-translate-y-1"
             >
-              {product.image ? (
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="h-60 w-full object-cover object-center"
-                  loading="lazy"
-                />
-              ) : (
-                <div
-                  className="h-52"
-                  style={{
-                    background: `linear-gradient(160deg, ${product.palette.from} 0%, ${product.palette.to} 100%)`,
-                  }}
-                />
-              )}
+              <img
+                src={product.image}
+                alt={product.name}
+                className="h-60 w-full object-cover object-center"
+                loading="lazy"
+              />
 
               <div className="p-5">
                 <div className="text-xs uppercase tracking-[0.2em] text-[var(--text-soft)]">
-                  {product.collection}
+                  {product.collection.name}
                 </div>
                 <h3 className="display-font mt-3 text-3xl">{product.name}</h3>
                 <p className="mt-2 text-sm font-medium">{product.flavor}</p>

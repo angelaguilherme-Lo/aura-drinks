@@ -1,29 +1,32 @@
 'use client';
 
 import { useState } from 'react';
-import type { Product } from '../aura-data';
+import { formatPrice } from '../../lib/catalog/price';
+import { getCollectionPresentation } from '../../lib/catalog/presentation';
+import type { ProductDetail } from '../../lib/catalog/types';
 import { AddToCartButton } from '../cart/add-to-cart-button';
 import { FavoriteButton } from '../favorites/favorite-button';
 
 type ProductInfoProps = {
-  product: Product;
+  product: ProductDetail;
 };
 
 export function ProductInfo({ product }: ProductInfoProps) {
   const [qty, setQty] = useState<number>(3);
+  const presentation = getCollectionPresentation(product.collection.slug);
 
   return (
     <div className="flex flex-col">
       <div className="flex items-start justify-between gap-4">
         <span
-          className={`inline-flex rounded-full px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] ${product.accent}`}
+          className={`inline-flex rounded-full px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] ${presentation.badgeClass}`}
         >
-          {product.collection}
+          {product.collection.name}
         </span>
 
         <div className="flex items-center gap-3">
           <span className="text-lg font-semibold text-[var(--text)]">
-            €{product.price.toFixed(2)}
+            {formatPrice(product.priceCents, product.currency)}
           </span>
           <FavoriteButton slug={product.slug} />
         </div>
@@ -120,15 +123,17 @@ export function ProductInfo({ product }: ProductInfoProps) {
             Collection
           </p>
           <p className="mt-2 font-medium text-[var(--text)]">
-            {product.collection}
+            {product.collection.name}
           </p>
         </div>
 
         <div className="rounded-[20px] border border-[var(--surface-line)] bg-white/60 p-4">
           <p className="text-xs uppercase tracking-[0.18em] text-[var(--text-soft)]">
-            Tone
+            Currency
           </p>
-          <p className="mt-2 font-medium text-[var(--text)]">{product.tone}</p>
+          <p className="mt-2 font-medium text-[var(--text)]">
+            {product.currency}
+          </p>
         </div>
       </div>
     </div>

@@ -1,11 +1,11 @@
 'use client';
 
 import type { ReactNode } from 'react';
-import type { Product } from '../aura-data';
+import type { ProductSummary } from '../../lib/catalog/types';
 import { useCart } from './cart-provider';
 
 type AddToCartButtonProps = {
-  product: Product;
+  product: ProductSummary;
   quantity?: number;
   className?: string;
   children?: ReactNode;
