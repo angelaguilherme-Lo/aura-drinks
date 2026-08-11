@@ -1,5 +1,6 @@
 'use client';
 
+import { formatPrice } from '../../lib/catalog/price';
 import { useCart } from './cart-provider';
 
 type CartDrawerProps = {
@@ -8,7 +9,14 @@ type CartDrawerProps = {
 };
 
 export function CartDrawer({ open, onClose }: CartDrawerProps) {
-  const { items, subtotal, updateQuantity, removeItem, clearCart } = useCart();
+  const {
+    items,
+    subtotalCents,
+    currency,
+    updateQuantity,
+    removeItem,
+    clearCart,
+  } = useCart();
 
   if (!open) return null;
 
@@ -55,7 +63,11 @@ export function CartDrawer({ open, onClose }: CartDrawerProps) {
                         {item.product.name}
                       </h3>
                       <p className="mt-1 text-sm text-[var(--text-muted)]">
-                        €{item.product.price.toFixed(2)} each
+                        {formatPrice(
+                          item.product.priceCents,
+                          item.product.currency
+                        )}{' '}
+                        each
                       </p>
                     </div>
 
@@ -98,7 +110,10 @@ export function CartDrawer({ open, onClose }: CartDrawerProps) {
                     </div>
 
                     <p className="text-sm font-semibold text-[var(--text)]">
-                      €{(item.product.price * item.quantity).toFixed(2)}
+                      {formatPrice(
+                        item.product.priceCents * item.quantity,
+                        item.product.currency
+                      )}
                     </p>
                   </div>
                 </div>
@@ -111,7 +126,7 @@ export function CartDrawer({ open, onClose }: CartDrawerProps) {
           <div className="mb-4 flex items-center justify-between">
             <span className="text-sm text-[var(--text-muted)]">Subtotal</span>
             <span className="text-lg font-semibold text-[var(--text)]">
-              €{subtotal.toFixed(2)}
+              {formatPrice(subtotalCents, currency)}
             </span>
           </div>
 

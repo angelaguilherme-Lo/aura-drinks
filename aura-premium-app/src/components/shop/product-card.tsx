@@ -2,31 +2,19 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import type { Product } from '../aura-data';
+import { formatPrice } from '../../lib/catalog/price';
+import { getCollectionPresentation } from '../../lib/catalog/presentation';
+import type { ProductSummary } from '../../lib/catalog/types';
 import { useCart } from '../cart/cart-provider';
 import { FavoriteButton } from '../favorites/favorite-button';
 
 type ProductCardProps = {
-  product: Product;
+  product: ProductSummary;
 };
-
-function badgeClass(collection: Product['collection']) {
-  switch (collection) {
-    case 'Winter':
-      return 'bg-rose-100 text-rose-800';
-    case 'Spring':
-      return 'bg-lime-100 text-lime-800';
-    case 'Summer':
-      return 'bg-amber-100 text-amber-800';
-    case 'Autumn':
-      return 'bg-orange-100 text-orange-800';
-    default:
-      return 'bg-stone-100 text-stone-800';
-  }
-}
 
 export function ProductCard({ product }: ProductCardProps) {
   const { addItem } = useCart();
+  const presentation = getCollectionPresentation(product.collection.slug);
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-[28px] border border-[var(--surface-line)] bg-white/95 p-5 shadow-[0_14px_34px_rgba(30,20,10,0.05)] backdrop-blur-sm transition duration-300 hover:-translate-y-1">
@@ -56,13 +44,13 @@ export function ProductCard({ product }: ProductCardProps) {
 
       <div className="mt-4 flex items-center justify-between gap-3">
         <span
-          className={`inline-flex rounded-full px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] ${badgeClass(product.collection)}`}
+          className={`inline-flex rounded-full px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] ${presentation.badgeClass}`}
         >
-          {product.collection}
+          {product.collection.name}
         </span>
 
         <span className="text-sm font-medium text-[var(--text-soft)]">
-          €{product.price.toFixed(2)}
+          {formatPrice(product.priceCents, product.currency)}
         </span>
       </div>
 

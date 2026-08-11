@@ -3,13 +3,18 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
-import { collections } from './aura-data';
+import { getCollectionPresentation } from '../lib/catalog/presentation';
+import type { CollectionSummary } from '../lib/catalog/types';
 
-function getCollectionHref(id: string) {
-  return `/shop?collection=${id}`;
+function getCollectionHref(slug: string) {
+  return `/shop?collection=${encodeURIComponent(slug)}`;
 }
 
-export function Collections() {
+export function Collections({
+  collections,
+}: {
+  collections: CollectionSummary[];
+}) {
   return (
     <section id="collections" className="section-space">
       <div className="container-shell">
@@ -41,15 +46,15 @@ export function Collections() {
               className="group premium-card overflow-hidden rounded-[30px] p-0 transition duration-300 hover:-translate-y-1"
             >
               <Link
-                href={getCollectionHref(item.id)}
-                aria-label={`View ${item.title}`}
+                href={getCollectionHref(item.slug)}
+                aria-label={`View ${item.name}`}
                 className="block h-full focus-visible:outline-none"
               >
-                {item.image ? (
+                {getCollectionPresentation(item.slug).image ? (
                   <div className="relative h-[320px] w-full overflow-hidden">
                     <img
-                      src={item.image}
-                      alt={item.title}
+                      src={getCollectionPresentation(item.slug).image}
+                      alt={item.name}
                       className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
                       loading="lazy"
                     />
@@ -57,18 +62,18 @@ export function Collections() {
                   </div>
                 ) : (
                   <div
-                    className={`h-[320px] w-full bg-gradient-to-br ${item.accent}`}
+                    className={`h-[320px] w-full bg-gradient-to-br ${getCollectionPresentation(item.slug).accent}`}
                   />
                 )}
 
                 <div className="flex min-h-[250px] flex-col p-6 md:p-7">
                   <div className="text-xs uppercase tracking-[0.28em] text-[var(--text-soft)]">
-                    {item.subtitle}
+                    {getCollectionPresentation(item.slug).subtitle}
                   </div>
 
                   <div className="mt-4 flex items-start justify-between gap-4">
                     <h3 className="display-font text-4xl leading-tight">
-                      {item.title}
+                      {item.name}
                     </h3>
 
                     <span className="mt-1 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--surface-line)] bg-white/55 text-[var(--text)] backdrop-blur-sm transition group-hover:bg-white/80">

@@ -1,9 +1,11 @@
-import type { Product } from '../aura-data';
+import { getCollectionPresentation } from '../../lib/catalog/presentation';
+import type { ProductDetail } from '../../lib/catalog/types';
 
-export function ProductGallery({ product }: { product: Product }) {
-  const gallery = product.gallery?.length
-    ? product.gallery
-    : [product.image].filter(Boolean);
+export function ProductGallery({ product }: { product: ProductDetail }) {
+  const gallery = product.galleryImages.length
+    ? product.galleryImages
+    : [{ url: product.image, altText: product.name }];
+  const presentation = getCollectionPresentation(product.collection.slug);
 
   return (
     <div className="grid gap-4 lg:grid-cols-[1fr_180px]">
@@ -18,7 +20,7 @@ export function ProductGallery({ product }: { product: Product }) {
           <div
             className="rounded-[34px] p-6 md:p-8"
             style={{
-              background: `linear-gradient(160deg, ${product.palette.from} 0%, ${product.palette.via} 58%, ${product.palette.to} 100%)`,
+              background: `linear-gradient(160deg, ${presentation.palette.from} 0%, ${presentation.palette.via} 58%, ${presentation.palette.to} 100%)`,
             }}
           >
             <div className="mx-auto flex min-h-[520px] max-w-[340px] items-center justify-center">
@@ -45,12 +47,12 @@ export function ProductGallery({ product }: { product: Product }) {
       <div className="grid gap-4">
         {gallery.map((image, index) => (
           <div
-            key={index}
+            key={`${image.url}-${index}`}
             className="premium-card overflow-hidden rounded-[24px] p-2"
           >
             <img
-              src={image}
-              alt={`${product.name} view ${index + 1}`}
+              src={image.url}
+              alt={image.altText ?? `${product.name} view ${index + 1}`}
               className="h-[176px] w-full rounded-[18px] object-cover object-center"
               loading="lazy"
             />
