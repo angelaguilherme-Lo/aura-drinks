@@ -1,5 +1,7 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+import { useAuth } from '../auth/auth-provider';
 import { formatPrice } from '../../lib/catalog/price';
 import { useCart } from './cart-provider';
 
@@ -9,6 +11,8 @@ type CartDrawerProps = {
 };
 
 export function CartDrawer({ open, onClose }: CartDrawerProps) {
+  const router = useRouter();
+  const { user, isLoading } = useAuth();
   const {
     items,
     subtotalCents,
@@ -17,6 +21,12 @@ export function CartDrawer({ open, onClose }: CartDrawerProps) {
     removeItem,
     clearCart,
   } = useCart();
+
+  function handleCheckout() {
+    if (items.length === 0 || isLoading) return;
+    onClose();
+    router.push(user ? '/checkout' : '/login?redirect=%2Fcheckout');
+  }
 
   if (!open) return null;
 
@@ -141,6 +151,8 @@ export function CartDrawer({ open, onClose }: CartDrawerProps) {
 
             <button
               type="button"
+              onClick={handleCheckout}
+              disabled={items.length === 0 || isLoading}
               className="inline-flex h-11 flex-1 items-center justify-center rounded-full bg-[#476f57] px-4 text-sm font-medium text-white transition hover:bg-[#3e624d]"
             >
               Checkout
