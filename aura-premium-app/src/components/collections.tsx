@@ -16,18 +16,14 @@ export function Collections() {
         <div className="mb-10 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
           <div className="max-w-[720px]">
             <p className="text-xs uppercase tracking-[0.28em] text-[var(--text-soft)]">
-              Seasonal architecture
+              Seasonal beverage
             </p>
             <h2 className="display-font mt-3 text-5xl leading-none md:text-6xl">
               Collections with a premium visual rhythm
             </h2>
           </div>
 
-          <p className="max-w-[42ch] text-[var(--text-muted)]">
-            The Aura brand is strongest when the product world is grouped by
-            season, mood, and visual character, so the interface merchandises
-            flavors as curated collections rather than a flat catalog.
-          </p>
+          
         </div>
 
         <div className="grid gap-6 md:grid-cols-2">
