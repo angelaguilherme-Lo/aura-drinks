@@ -33,6 +33,7 @@ type SignInInput = {
 
 type AuthContextValue = {
   user: User | null;
+  token: string | null;
   isLoading: boolean;
   error: string | null;
   signUp: (input: SignUpInput) => Promise<void>;
@@ -44,6 +45,7 @@ const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
+  const [token, setToken] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -56,10 +58,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       if (token) {
         try {
           const authenticatedUser = await getMe(token);
-          if (isActive) setUser(authenticatedUser);
+          if (isActive) {
+            setUser(authenticatedUser);
+            setToken(token);
+          }
         } catch {
           window.localStorage.removeItem(AUTH_TOKEN_STORAGE_KEY);
-          if (isActive) setUser(null);
+          if (isActive) {
+            setUser(null);
+            setToken(null);
+          }
         }
       }
 
@@ -77,11 +85,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setIsLoading(true);
     setError(null);
     setUser(null);
+    setToken(null);
 
     try {
       const result = await register(input);
       window.localStorage.setItem(AUTH_TOKEN_STORAGE_KEY, result.token);
       setUser(result.user);
+      setToken(result.token);
     } catch (caughtError) {
       const message =
         caughtError instanceof Error
@@ -98,13 +108,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setIsLoading(true);
     setError(null);
     setUser(null);
+    setToken(null);
 
     try {
       const result = await login(input);
       window.localStorage.setItem(AUTH_TOKEN_STORAGE_KEY, result.token);
       setUser(result.user);
+      setToken(result.token);
     } catch (caughtError) {
       window.localStorage.removeItem(AUTH_TOKEN_STORAGE_KEY);
+      setToken(null);
       const message =
         caughtError instanceof Error
           ? caughtError.message
@@ -119,12 +132,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const signOut = useCallback(() => {
     window.localStorage.removeItem(AUTH_TOKEN_STORAGE_KEY);
     setUser(null);
+    setToken(null);
     setError(null);
   }, []);
 
   const value = useMemo<AuthContextValue>(
-    () => ({ user, isLoading, error, signUp, signIn, signOut }),
-    [user, isLoading, error, signUp, signIn, signOut]
+    () => ({ user, token, isLoading, error, signUp, signIn, signOut }),
+    [user, token, isLoading, error, signUp, signIn, signOut]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
