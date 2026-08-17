@@ -1,4 +1,5 @@
 'use client';
+import { Suspense } from 'react';
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -194,13 +195,16 @@ function CheckoutContent() {
     </main>
   );
 }
+
 export default function CheckoutPage() {
   return (
     <>
       <Header />
-      <AuthGuard>
-        <CheckoutContent />
-      </AuthGuard>
+      <Suspense fallback={null}>
+        <AuthGuard>
+          <CheckoutContent />
+        </AuthGuard>
+      </Suspense>
     </>
   );
 }

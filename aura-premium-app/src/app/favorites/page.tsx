@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { AuthGuard } from '../../components/auth/auth-guard';
 import { CatalogError } from '../../components/catalog-error';
 import { FavoritesContent } from '../../components/favorites/favorites-content';
@@ -16,9 +17,11 @@ export default async function FavoritesPage() {
     return (
       <>
         <Header />
-        <AuthGuard>
-          <CatalogError message={message} />
-        </AuthGuard>
+        <Suspense fallback={null}>
+          <AuthGuard>
+            <CatalogError message={message} />
+          </AuthGuard>
+        </Suspense>
       </>
     );
   }
@@ -26,11 +29,13 @@ export default async function FavoritesPage() {
   return (
     <>
       <Header />
-      <AuthGuard>
-        <main className="px-4 pb-16 pt-10 sm:px-6 lg:px-8">
-          <FavoritesContent products={products} />
-        </main>
-      </AuthGuard>
+      <Suspense fallback={null}>
+        <AuthGuard>
+          <main className="px-4 pb-16 pt-10 sm:px-6 lg:px-8">
+            <FavoritesContent products={products} />
+          </main>
+        </AuthGuard>
+      </Suspense>
     </>
   );
 }

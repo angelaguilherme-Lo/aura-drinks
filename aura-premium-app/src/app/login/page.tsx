@@ -1,13 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '../../components/auth/auth-provider';
 import { Header } from '../../components/header';
 import { getSafeRedirectTarget } from '../../lib/auth-api';
 
-export default function LoginPage() {
+function LoginContent() {
   const { signIn, isLoading, error } = useAuth();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -98,5 +98,13 @@ export default function LoginPage() {
         </div>
       </main>
     </>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={null}>
+      <LoginContent />
+    </Suspense>
   );
 }

@@ -1,5 +1,6 @@
 'use client';
 
+import { Suspense } from 'react';
 import Link from 'next/link';
 import { Header } from '../../components/header';
 import { AuthGuard } from '../../components/auth/auth-guard';
@@ -93,11 +94,13 @@ export default function AccountPage() {
   return (
     <>
       <Header />
-      <AuthGuard>
-        <main className="px-4 pb-16 pt-10 sm:px-6 lg:px-8">
-          <AccountContent />
-        </main>
-      </AuthGuard>
+      <Suspense fallback={null}>
+        <AuthGuard>
+          <main className="px-4 pb-16 pt-10 sm:px-6 lg:px-8">
+            <AccountContent />
+          </main>
+        </AuthGuard>
+      </Suspense>
     </>
   );
 }
