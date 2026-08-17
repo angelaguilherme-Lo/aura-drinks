@@ -8,7 +8,7 @@ import {
   auraAssistantResultJsonSchema,
 } from '../../../lib/ai/aura-response-schema';
 
-const client = new OpenAI({
+let client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
@@ -21,7 +21,7 @@ export async function POST(req: Request) {
     catalog: auraDemoCatalog,
   });
 
-  const response = await client.responses.create({
+  let  response = await client.responses.create({
     model: 'gpt-5',
     instructions,
     input,
