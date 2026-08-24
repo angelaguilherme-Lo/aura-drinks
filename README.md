@@ -42,7 +42,7 @@ Become the world's leading premium electrolyte soda brand.
 
 ## Website
 
-Project demo
+Project demo: https://aura-premium-app-three.vercel.app
 
 ## Founder
 
