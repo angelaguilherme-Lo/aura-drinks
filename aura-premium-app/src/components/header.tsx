@@ -21,10 +21,10 @@ export function Header() {
     <header className="sticky top-0 z-40 px-4 pt-4 sm:px-6 lg:px-8">
       <div className="mx-auto flex max-w-[1240px] items-center justify-between gap-4 rounded-full border border-white/60 bg-white/78 px-4 py-3 shadow-[0_18px_50px_rgba(42,32,20,0.10)] backdrop-blur-xl sm:px-6">
         <Link href="/" className="shrink-0" aria-label="Aura home">
-          <AuraLogo className="h-10 w-auto text-[var(--text)]" />
+          <AuraLogo className="h-7 w-auto text-[var(--text)] sm:h-8 xl:h-10" />
         </Link>
 
-        <nav className="hidden min-w-0 flex-1 items-center justify-center gap-8 lg:flex">
+        <nav className="hidden min-w-0 flex-1 items-center justify-center gap-8 xl:flex">
           {navItems.map((item) => (
             <Link
               key={item.label}
@@ -38,11 +38,13 @@ export function Header() {
 
         <div className="flex shrink-0 items-center gap-3">
           <CartTrigger onClick={openCart} />
-          <AccountMenu />
+          <div className="hidden sm:block">
+            <AccountMenu />
+          </div>
         </div>
       </div>
 
-      <div className="mx-auto mt-3 lg:hidden">
+      <div className="mx-auto mt-3 xl:hidden">
         <nav className="flex flex-wrap items-center justify-center gap-3 rounded-full border border-white/60 bg-white/78 px-4 py-3 shadow-[0_12px_28px_rgba(42,32,20,0.08)] backdrop-blur-xl">
           {navItems.map((item) => (
             <Link

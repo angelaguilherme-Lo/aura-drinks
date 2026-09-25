@@ -5,9 +5,11 @@ import {
   useCallback,
   useContext,
   useMemo,
-  useState,
+  useSyncExternalStore,
   type ReactNode,
 } from 'react';
+import { createBrowserStore } from '../../lib/browser-store';
+import { isDemoCart } from '../../lib/demo-checkout';
 import type { CartProduct, ProductSummary } from '../../lib/catalog/types';
 
 export type CartItem = {
@@ -28,10 +30,23 @@ type CartContextValue = {
 
 const CartContext = createContext<CartContextValue | undefined>(undefined);
 
+const cartStore = createBrowserStore<CartItem[]>(
+  'aura-demo-cart-v1',
+  [],
+  isDemoCart
+);
+const setItems = cartStore.set;
+
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [items, setItems] = useState<CartItem[]>([]);
+  const items = useSyncExternalStore(
+    cartStore.subscribe,
+    cartStore.getSnapshot,
+    cartStore.getServerSnapshot
+  );
 
   const addItem = useCallback((product: ProductSummary, quantity = 1) => {
+    if (!Number.isSafeInteger(quantity) || quantity < 1) return;
+    quantity = Math.min(quantity, 99);
     setItems((current) => {
       const existing = current.find(
         (item) => item.product.slug === product.slug
@@ -40,7 +55,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       if (existing) {
         return current.map((item) =>
           item.product.slug === product.slug
-            ? { ...item, quantity: item.quantity + quantity }
+            ? { ...item, quantity: Math.min(99, item.quantity + quantity) }
             : item
         );
       }
@@ -69,6 +84,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   const updateQuantity = useCallback(
     (slug: string, quantity: number) => {
+      if (!Number.isSafeInteger(quantity)) return;
+      quantity = Math.min(99, quantity);
       if (quantity <= 0) {
         removeItem(slug);
         return;
