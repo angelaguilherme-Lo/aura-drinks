@@ -22,8 +22,12 @@ export function CartDrawer({ open, onClose }: CartDrawerProps) {
     clearCart,
   } = useCart();
 
+  const hasDemoProducts = items.some(({ product }) =>
+    product.id.startsWith('demo:')
+  );
+
   function handleCheckout() {
-    if (items.length === 0 || isLoading) return;
+    if (items.length === 0 || isLoading || hasDemoProducts) return;
     onClose();
     router.push(user ? '/checkout' : '/login?redirect=%2Fcheckout');
   }
@@ -140,6 +144,12 @@ export function CartDrawer({ open, onClose }: CartDrawerProps) {
             </span>
           </div>
 
+          {hasDemoProducts && (
+            <p className="mb-4 text-sm text-[var(--text-muted)]" role="status">
+              Enjoy browsing the demo collection. Ordering is temporarily
+              unavailable.
+            </p>
+          )}
           <div className="flex gap-3">
             <button
               type="button"
@@ -152,7 +162,7 @@ export function CartDrawer({ open, onClose }: CartDrawerProps) {
             <button
               type="button"
               onClick={handleCheckout}
-              disabled={items.length === 0 || isLoading}
+              disabled={items.length === 0 || isLoading || hasDemoProducts}
               className="inline-flex h-11 flex-1 items-center justify-center rounded-full bg-[#476f57] px-4 text-sm font-medium text-white transition hover:bg-[#3e624d]"
             >
               Checkout

@@ -64,6 +64,12 @@ export async function createOrder(
   token: string,
   items: CreateOrderItem[]
 ): Promise<Order> {
+  if (items.some((item) => item.productId.startsWith('demo:'))) {
+    throw new OrderApiError(
+      'These demo products are available to browse only. Ordering is temporarily unavailable.',
+      null
+    );
+  }
   let response: Response;
   try {
     response = await fetch(`${API_URL}/api/orders`, {
