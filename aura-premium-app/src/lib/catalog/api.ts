@@ -1,3 +1,4 @@
+import { demoProducts, demoCollections, demoCollectionBySlug } from './demo';
 import type {
   CollectionDetail,
   CollectionSummary,
@@ -26,7 +27,10 @@ async function request<T>(path: string): Promise<T> {
   let response: Response;
 
   try {
-    response = await fetch(`${API_URL}${path}`, { cache: 'no-store' });
+    response = await fetch(`${API_URL}${path}`, {
+      cache: 'no-store',
+      signal: AbortSignal.timeout(3000),
+    });
   } catch {
     throw new CatalogApiError(
       'Unable to load the catalog. Please make sure the server is running and try again.'
@@ -64,30 +68,80 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null;
 }
 
-export async function getProducts() {
-  const data = await request<unknown>('/api/products');
-  if (!Array.isArray(data)) unexpectedResponse();
-  return data as ProductSummary[];
+// This is a demo storefront: keep the original public catalogue browsable
+// during backend outages. Real API responses (including empty lists and 404s)
+// remain authoritative; account and order requests never use demo responses.
+async function withDemoFallback<T>(
+  load: () => Promise<T>,
+  fallback: () => T
+): Promise<T> {
+  try {
+    return await load();
+  } catch (error) {
+    if (!(error instanceof CatalogApiError)) throw error;
+    if (error.statusCode !== undefined && error.statusCode < 500) throw error;
+    if (process.env.CATALOG_DEMO_FALLBACK === 'false') throw error;
+    console.warn(
+      'Catalogue API unavailable; using the bundled demo catalogue.'
+    );
+    return fallback();
+  }
 }
 
-export async function getProductBySlug(slug: string) {
-  const data = await request<unknown>(
-    `/api/products/${encodeURIComponent(slug)}`
+export async function getProducts(): Promise<ProductSummary[]> {
+  return withDemoFallback(
+    async () => {
+      const data = await request<unknown>('/api/products');
+      if (!Array.isArray(data)) unexpectedResponse();
+      return data as ProductSummary[];
+    },
+    () => demoProducts
   );
-  if (!isRecord(data)) unexpectedResponse();
-  return data as ProductDetail;
 }
 
-export async function getCollections() {
-  const data = await request<unknown>('/api/collections');
-  if (!Array.isArray(data)) unexpectedResponse();
-  return data as CollectionSummary[];
-}
-
-export async function getCollectionBySlug(slug: string) {
-  const data = await request<unknown>(
-    `/api/collections/${encodeURIComponent(slug)}`
+export async function getProductBySlug(slug: string): Promise<ProductDetail> {
+  return withDemoFallback(
+    async () => {
+      const data = await request<unknown>(
+        `/api/products/${encodeURIComponent(slug)}`
+      );
+      if (!isRecord(data)) unexpectedResponse();
+      return data as ProductDetail;
+    },
+    () => {
+      const product = demoProducts.find((candidate) => candidate.slug === slug);
+      if (!product) throw new CatalogApiError('Product not found.', 404);
+      return product;
+    }
   );
-  if (!isRecord(data)) unexpectedResponse();
-  return data as CollectionDetail;
+}
+
+export async function getCollections(): Promise<CollectionSummary[]> {
+  return withDemoFallback(
+    async () => {
+      const data = await request<unknown>('/api/collections');
+      if (!Array.isArray(data)) unexpectedResponse();
+      return data as CollectionSummary[];
+    },
+    () => demoCollections
+  );
+}
+
+export async function getCollectionBySlug(
+  slug: string
+): Promise<CollectionDetail> {
+  return withDemoFallback(
+    async () => {
+      const data = await request<unknown>(
+        `/api/collections/${encodeURIComponent(slug)}`
+      );
+      if (!isRecord(data)) unexpectedResponse();
+      return data as CollectionDetail;
+    },
+    () => {
+      const collection = demoCollectionBySlug(slug);
+      if (!collection) throw new CatalogApiError('Collection not found.', 404);
+      return collection;
+    }
+  );
 }

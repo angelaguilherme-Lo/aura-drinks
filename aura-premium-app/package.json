@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "tsx --test src/lib/catalog/api.test.ts"
   },
   "dependencies": {
     "ai": "^7.0.34",
@@ -27,6 +28,7 @@
     "eslint-config-next": "16.2.10",
     "prettier": "^3.9.6",
     "tailwindcss": "^4",
+    "tsx": "^4.23.15",
     "typescript": "^5"
   }
 }
