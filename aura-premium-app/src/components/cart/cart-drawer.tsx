@@ -1,7 +1,8 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useAuth } from '../auth/auth-provider';
+import Image from 'next/image';
+import { demoTotals } from '../../lib/demo-checkout';
 import { formatPrice } from '../../lib/catalog/price';
 import { useCart } from './cart-provider';
 
@@ -12,24 +13,13 @@ type CartDrawerProps = {
 
 export function CartDrawer({ open, onClose }: CartDrawerProps) {
   const router = useRouter();
-  const { user, isLoading } = useAuth();
-  const {
-    items,
-    subtotalCents,
-    currency,
-    updateQuantity,
-    removeItem,
-    clearCart,
-  } = useCart();
+  const { items, currency, updateQuantity, removeItem, clearCart } = useCart();
 
-  const hasDemoProducts = items.some(({ product }) =>
-    product.id.startsWith('demo:')
-  );
-
+  const totals = demoTotals(items);
   function handleCheckout() {
-    if (items.length === 0 || isLoading || hasDemoProducts) return;
+    if (!items.length) return;
     onClose();
-    router.push(user ? '/checkout' : '/login?redirect=%2Fcheckout');
+    router.push('/checkout');
   }
 
   if (!open) return null;
@@ -72,6 +62,13 @@ export function CartDrawer({ open, onClose }: CartDrawerProps) {
                   className="rounded-[24px] border border-[var(--surface-line)] bg-[var(--surface)] p-4"
                 >
                   <div className="flex items-start justify-between gap-4">
+                    <Image
+                      src={item.product.image}
+                      alt={item.product.name}
+                      width={64}
+                      height={88}
+                      className="h-24 w-16 shrink-0 rounded-2xl bg-white object-contain"
+                    />
                     <div>
                       <h3 className="text-sm font-semibold text-[var(--text)]">
                         {item.product.name}
@@ -140,16 +137,23 @@ export function CartDrawer({ open, onClose }: CartDrawerProps) {
           <div className="mb-4 flex items-center justify-between">
             <span className="text-sm text-[var(--text-muted)]">Subtotal</span>
             <span className="text-lg font-semibold text-[var(--text)]">
-              {formatPrice(subtotalCents, currency)}
+              {formatPrice(totals.subtotalCents, currency)}
             </span>
           </div>
 
-          {hasDemoProducts && (
-            <p className="mb-4 text-sm text-[var(--text-muted)]" role="status">
-              Enjoy browsing the demo collection. Ordering is temporarily
-              unavailable.
-            </p>
+          {totals.discountPercent > 0 && (
+            <div className="mb-3 flex justify-between text-sm text-[#476f57]">
+              <span>Bundle saving ({totals.discountPercent}%)</span>
+              <span>−{formatPrice(totals.discountCents, currency)}</span>
+            </div>
           )}
+          <div className="mb-4 flex justify-between font-semibold">
+            <span>Demo total</span>
+            <span>{formatPrice(totals.totalCents, currency)}</span>
+          </div>
+          <p className="mb-4 text-xs text-[var(--text-muted)]">
+            Demo shopping experience. No payment or account needed.
+          </p>
           <div className="flex gap-3">
             <button
               type="button"
@@ -162,10 +166,10 @@ export function CartDrawer({ open, onClose }: CartDrawerProps) {
             <button
               type="button"
               onClick={handleCheckout}
-              disabled={items.length === 0 || isLoading || hasDemoProducts}
+              disabled={items.length === 0}
               className="inline-flex h-11 flex-1 items-center justify-center rounded-full bg-[#476f57] px-4 text-sm font-medium text-white transition hover:bg-[#3e624d]"
             >
-              Checkout
+              Demo checkout
             </button>
           </div>
         </div>

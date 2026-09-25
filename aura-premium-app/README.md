@@ -46,9 +46,26 @@ under `public/images`. Update the snapshot alongside any demo catalogue changes.
 
 Successful API results, including empty lists, and client errors such as 404
 remain authoritative. Set `CATALOG_DEMO_FALLBACK=false` to disable recovery for
-live commerce. Bundled products have `demo:` IDs; carts containing them explain
-that ordering is unavailable, and the order client refuses to submit these IDs.
-Authentication and orders still require a healthy backend and database.
+live commerce. Bundled products have `demo:` IDs, which the real order client refuses to submit.
+The public checkout is now a self-contained shopping simulation; it never calls
+the real order client. Authentication still requires a healthy backend.
 
 Run `npm test` to check outage recovery, catalogue consistency, image paths,
 API precedence, not-found behavior and the demo-order guard.
+
+## Shopping sandbox
+
+Add drinks to the cart and choose **Demo checkout**. No account is required.
+The cart shows product images, editable quantities, and bundle savings: 5% for
+3–5 bottles or 10% for 6+ bottles. Delivery is complimentary in the simulation.
+
+Checkout has delivery, payment, review and confirmation screens. Fictional
+delivery details are prefilled and a non-editable test card is supplied. Choose
+**Decline payment — test retry** to demonstrate a declined payment, then change
+the scenario to **Approve payment** and retry. No requests are made to a payment
+provider or the order API, no email is sent, and no real purchase is created.
+
+The cart and last simulated receipt persist in browser local storage. Delivery
+form values are not persisted or transmitted. Use **Clear** in the cart or
+**Start another demo purchase** on the receipt to reset the respective demo data.
+If browser storage is unavailable, the flow continues in memory for that visit.
