@@ -13,12 +13,12 @@ export function CartTrigger({ onClick }: CartTriggerProps) {
     <button
       type="button"
       onClick={onClick}
-      className="relative inline-flex h-11 items-center justify-center rounded-full border border-[var(--surface-line)] bg-white px-5 text-sm font-medium text-[var(--text)] transition hover:bg-[var(--surface)]"
+      className="relative inline-flex h-11 items-center justify-center rounded-full border border-[var(--surface-line)] bg-white px-3 sm:px-5 text-sm font-medium text-[var(--text)] transition hover:bg-[var(--surface)]"
       aria-label={`Open cart with ${totalItems} items`}
     >
       Cart
       {totalItems > 0 && (
-        <span className="ml-3 inline-flex min-w-[24px] items-center justify-center rounded-full bg-[#476f57] px-2 py-0.5 text-xs font-semibold text-white">
+        <span className="ml-2 sm:ml-3 inline-flex min-w-[24px] items-center justify-center rounded-full bg-[#476f57] px-2 py-0.5 text-xs font-semibold text-white">
           {totalItems}
         </span>
       )}

@@ -112,6 +112,7 @@ export default function CheckoutPage() {
   const [error, setError] = useState('');
   const submitting = useRef(false);
   const totals = demoTotals(items);
+  const bottleCount = items.reduce((sum, item) => sum + item.quantity, 0);
   const headingRef = useRef<HTMLHeadingElement>(null);
   function goToStep(next: number) {
     setError('');
